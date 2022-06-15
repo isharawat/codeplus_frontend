@@ -29,7 +29,7 @@ const handleChange = (e) => {
     <div className={style.account}>
       <div className={style.btn}>
         <div></div>
-        <button className={style.Signup} onClick={handleSignup} >
+        <button className={style.Signup} >
           Sign Up
         </button>
         <button className={style.Login} >Log In</button>
@@ -89,7 +89,7 @@ const handleChange = (e) => {
           </label>
         </div>
         <div className={style.buttonbox}>
-          <button className={style.button} onClick={handleLogin} >LOG IN</button>
+          <button className={style.button}  >LOG IN</button>
         </div>
         <div>
           <p>{!credentials ? "wrong credential" : null}</p>
