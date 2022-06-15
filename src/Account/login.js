@@ -35,7 +35,7 @@ const handleChange = (e) => {
         <button className={style.Login} >Log In</button>
       </div>
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} method="post">
         <div>
           <h3>Fill your account Details:</h3>
         </div>
