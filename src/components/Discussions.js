@@ -8,7 +8,7 @@ function Discussion() {
 
 export default function Discussions() {
   return (
-    <div className={style.part2}>
+    <div>
       <div>
         <Discussion />
       </div>

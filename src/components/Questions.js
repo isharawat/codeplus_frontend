@@ -10,7 +10,7 @@ function DiffQuestion() {
 }
 export default function Question() {
   return (
-    <div className={style.part2}>
+    <div>
       <div>
         <ul className={styles.list}>
           <DiffQuestion />

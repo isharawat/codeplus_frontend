@@ -8,8 +8,7 @@ import Post from "./Post";
 
 export default function Announce() {
   return (
-
-    <div className={style.part2}>
+    <div>
       <div>
         <Announcement />
       </div>
@@ -24,6 +23,6 @@ export default function Announce() {
       </div>
   
     </div>
-
+  
   );
 }

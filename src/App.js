@@ -5,6 +5,7 @@ import Discussions from './components/Discussions';
 import Menubar from "./components/menu";
 import Leaderboard from "./components/sideLeaderboard";
 import EditDetails from './Account/editDetails';
+import MainLeaderboard from './components/MainLeaderboard';
 import Login from './Account/login';
 import Signup from './Account/signup';
 import Topbar from "./components/topbar";
@@ -24,7 +25,7 @@ function App() {
           <Routes>
           <Route path="/" element={<Announce/>}/>
            <Route path="/Discussions" element={<Discussions/>} /> 
-           <Route path="/Leaderboard" element={<Leaderboard/>} /> 
+           <Route path="/MainLeaderboard" element={<MainLeaderboard/>} /> 
            <Route path="/Questions" element={<Question/>} /> 
            <Route path="/signup" element={<Signup />} /> 
            <Route path="/Login" element={<Login/>} /> 
