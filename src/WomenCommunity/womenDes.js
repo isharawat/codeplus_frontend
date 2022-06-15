@@ -1,10 +1,10 @@
 export default function Womendes(){
     return(
-        <div>
+        <div >
             <h1>Women Community</h1>
             <p>
-                jdsklfjkjfkjkdsfjffffffffffffffffalskdfjfkjdskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkfjkfjkfjkkdfjkjfksjfksjfksjfksjfkjfkjfjjfkjfksjfkjfksjfkajfkjfkajffa;jfkajfkjfkjf
-            </p>
+                jdsklfjkjfkjkdsfjkkkkkkkkkkkkkkkkkkkkkk
+                </p>
         </div>
     );
 }
