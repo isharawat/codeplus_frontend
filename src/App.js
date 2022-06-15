@@ -4,6 +4,7 @@ import Question from './components/Questions';
 import Discussions from './components/Discussions';
 import Menubar from "./components/menu";
 import Leaderboard from "./components/sideLeaderboard";
+import MainLeaderboard from './components/Leaderboard';
 import EditDetails from './Account/editDetails';
 import Login from './Account/login';
 import Signup from './Account/signup';
@@ -24,7 +25,7 @@ function App() {
           <Routes>
           <Route path="/" element={<Announce/>}/>
            <Route path="/Discussions" element={<Discussions/>} /> 
-           <Route path="/Leaderboard" element={<Leaderboard/>} /> 
+           <Route path="/Leaderboard" element={<MainLeaderboard/>} /> 
            <Route path="/Questions" element={<Question/>} /> 
            <Route path="/signup" element={<Signup />} /> 
            <Route path="/Login" element={<Login/>} /> 
