@@ -1,4 +1,4 @@
-import styles from "./Comment.module.css";
+import styles from "../styles/Comment.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
 export default function Comment() {
@@ -13,7 +13,7 @@ export default function Comment() {
             className={styles.commentbox}
           ></textarea>
           <div className={styles.submit}>
-            <button type="submit" >
+            <button type="submit">
               <FontAwesomeIcon
                 icon={faCircleArrowRight}
                 className={styles.icon}

@@ -1,4 +1,4 @@
-import styles from "./topbar.module.css";
+import styles from "../styles/topbar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faUser, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 export default function Topbar() {

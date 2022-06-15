@@ -1,7 +1,6 @@
-import styles from "./Post.module.css"
+import styles from "../styles/Post.module.css"
 
-export default function Post(){
-    
+export default function Post(){    
     return(
         <div className={styles.post}>
             <form>
