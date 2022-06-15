@@ -4,6 +4,7 @@ import Question from './components/Questions';
 import Discussions from './components/Discussions';
 import Menubar from "./components/menu";
 import Leaderboard from "./components/sideLeaderboard";
+import MainLeaderboard from './components/MainLeaderboard';
 import EditDetails from './Account/editDetails';
 import MainLeaderboard from './components/MainLeaderboard';
 import Login from './Account/login';
