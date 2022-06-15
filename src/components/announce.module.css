@@ -1,0 +1,30 @@
+.container{
+    background-color: #D8E4E8;
+    width: 85%;
+    margin: auto;
+    margin-top: 10px;
+    padding:5px 25px 5px 25px;
+    border-radius: 10px;
+}
+.reply{
+    background-color: #06576C;
+    width: 75%;
+    margin: auto;
+    margin-top: 5px;
+    padding:5px 25px 5px 25px;
+    border-radius: 10px;
+    color: white;
+}
+.postedBy{
+    display: grid;
+    grid-template-columns: 15fr 1fr;
+    font-size: 10px;
+}
+.icon{
+    font-size: 10px;
+    color: #052E3B;
+}
+.time{
+    margin-left: 100px;
+}
+
