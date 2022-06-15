@@ -15,7 +15,7 @@ function LeaderboardName() {
 
 export default function MainLeaderboard() {
   return (
-    <div className={style.part2}>
+    <div >
       <div>
         <div className={styles.button}>
           <button className={styles.buttoncom}>Leaderboard</button>
