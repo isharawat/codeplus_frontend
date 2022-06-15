@@ -104,7 +104,7 @@ const EditDetails = () => {
                     <button>Save Changes</button>
                 </div>
             </form>
-            <button onClick={handleChangetoHome}>Back to Home</button>
+            <button >Back to Home</button>
         </div>
      );
 }

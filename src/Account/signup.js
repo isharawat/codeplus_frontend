@@ -41,7 +41,7 @@ const Signup = () => {
           <button className={style.Signup} >
             Sign Up
           </button>
-          <button className={style.Login} onClick={handleLogin}>Log In</button>
+          <button className={style.Login} >Log In</button>
         </div>
         <div>
           <form onSubmit={handleSubmit}>

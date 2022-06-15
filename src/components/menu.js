@@ -1,6 +1,6 @@
 import styles from "../styles/menu.module.css";
 import React from "react";
-
+import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCopyright,
@@ -18,17 +18,17 @@ export default function Menubar() {
       <div className={styles.logo}>CodePlus</div>
       <div>
         <button className={styles.menubutton}>
-          <a href="./">
+          <NavLink to ="./">
             <div className={styles.menucontent}>
               <span style={{ marginRight: "20px" }}>
                 <FontAwesomeIcon icon={faBullhorn} className={styles.icon} />
               </span>
               Announcement
             </div>
-          </a>
+          </NavLink>
         </button>
         <button className={styles.menubutton}>
-          <a href="./Questions">
+          <NavLink to ="./Questions">
             <div className={styles.menucontent}>
               <span style={{ marginRight: "20px" }}>
                 <FontAwesomeIcon
@@ -38,30 +38,30 @@ export default function Menubar() {
               </span>
               Todo-List
             </div>
-          </a>
+          </NavLink>
         </button>
         <button className={styles.menubutton}>
-          <a href="./Discussions">
+          <NavLink to ="./Discussions">
             <div className={styles.menucontent}>
               <span style={{ marginRight: "20px" }}>
                 <FontAwesomeIcon icon={faMessage} className={styles.icon} />
               </span>
               Discussions
             </div>
-          </a>
+          </NavLink>
         </button>
         <button className={styles.menubutton}>
-          <a href="./WomenCommunity/womenDes">
+          <NavLink to ="./Womencommunity">
             <div className={styles.menucontent}>
               <span style={{ marginRight: "20px" }}>
                 <FontAwesomeIcon icon={faVenus} className={styles.icon} />
               </span>
               Girls Community
             </div>
-          </a>
+          </NavLink>
         </button>
         <button className={styles.menubutton}>
-          <a href="./Leaderboard">
+          <NavLink to="./Leaderboard">
             <div className={styles.menucontent}>
               <span style={{ marginRight: "20px" }}>
                 <FontAwesomeIcon
@@ -71,17 +71,17 @@ export default function Menubar() {
               </span>
               Leaderboard
             </div>
-          </a>
+          </NavLink>
         </button>
         <button className={styles.menubutton}>
-          <a href="./topbar/topbar">
+          <NavLink to="./topbar/topbar">
             <div className={styles.menucontent}>
               <span style={{ marginRight: "20px" }}>
                 <FontAwesomeIcon icon={faUserGroup} className={styles.icon} />
               </span>
               Lockout
             </div>
-          </a>
+          </NavLink>
         </button>
       </div>
       <div className={styles.footer}>
