@@ -6,7 +6,6 @@ import Menubar from "./components/menu";
 import Leaderboard from "./components/sideLeaderboard";
 import MainLeaderboard from './components/MainLeaderboard';
 import EditDetails from './Account/editDetails';
-import MainLeaderboard from './components/MainLeaderboard';
 import Login from './Account/login';
 import Signup from './Account/signup';
 import Topbar from "./components/topbar";
