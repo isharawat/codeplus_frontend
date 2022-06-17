@@ -13,16 +13,25 @@ export default function Question() {
       setQuestions(res.data.data.questions)
       console.log(res.data);
     })
-  },[])
+  },question)
+
+  const deleteQuestion = (id) => {
+     Axios.delete(`http://localhost:3001/delete-question/${id}`).then(res => {
+      setQuestions(res.data.data.questions)
+      console.log(res.data);
+    })
+     
+  }
 
   return (
     <div>
       <ul>{
         question.map((val,key) => {
+          console.log(val);
           return <li key={key} className={styles.li} >
-            <span>{val.question}</span>
+            <span><a href={val.url}>{val.question}</a></span>
             <span>{val.points}</span>
-            <button type="delete" style={{border: "none", backgroundColor: "#D8E4E8",}}>
+            <button type="delete" style={{border: "none", backgroundColor: "#D8E4E8",}} onClick ={() => {deleteQuestion(val._id)} }>
               <FontAwesomeIcon
                 icon={faTrash}          
                 style={{ fontSize: 15, color: "black", cursor: "pointer" }}
