@@ -6,6 +6,7 @@ import Menubar from "./components/menu";
 import ManageQuestions from "./components/ManageQuestions";
 import ManagePosts from "./components/ManagePosts";
 import Leaderboard from "./components/sideLeaderboard";
+import MainLeaderboard from './components/MainLeaderboard';
 import EditDetails from './Account/editDetails';
 import MainLeaderboard from './components/MainLeaderboard';
 import Login from './Account/login';
