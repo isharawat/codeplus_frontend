@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 import style from "./Account.module.css";
 
@@ -29,9 +30,11 @@ const handleChange = (e) => {
     <div className={style.account}>
       <div className={style.btn}>
         <div></div>
-        <button className={style.Signup} >
-          Sign Up
-        </button>
+        <NavLink to ="/signup">
+          <button className={style.Signup} >
+            Sign Up
+          </button>
+        </NavLink>
         <button className={style.Login} >Log In</button>
       </div>
     <div>
