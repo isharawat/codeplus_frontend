@@ -1,6 +1,6 @@
 import styles from "../styles/menu.module.css";
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCopyright,
@@ -80,6 +80,26 @@ export default function Menubar() {
                 <FontAwesomeIcon icon={faUserGroup} className={styles.icon} />
               </span>
               Lockout
+            </div>
+          </NavLink>
+        </button>
+        <button className={styles.menubutton}>
+          <NavLink to="./ManageQuestions">
+            <div className={styles.menucontent}>
+              <span style={{ marginRight: "20px" }}>
+                <FontAwesomeIcon icon={faUserGroup} className={styles.icon} />
+              </span>
+                Manage Questions
+            </div>
+          </NavLink>
+        </button>
+        <button className={styles.menubutton}>
+          <NavLink to="./ManagePosts">
+            <div className={styles.menucontent}>
+              <span style={{ marginRight: "20px" }}>
+                <FontAwesomeIcon icon={faUserGroup} className={styles.icon} />
+              </span>
+                Manage Posts
             </div>
           </NavLink>
         </button>

@@ -3,6 +3,8 @@ import Announce from './components/announce';
 import Question from './components/Questions';
 import Discussions from './components/Discussions';
 import Menubar from "./components/menu";
+import ManageQuestions from "./components/ManageQuestions";
+import ManagePosts from "./components/ManagePosts";
 import Leaderboard from "./components/sideLeaderboard";
 import EditDetails from './Account/editDetails';
 import MainLeaderboard from './components/MainLeaderboard';
@@ -30,7 +32,10 @@ function App() {
            <Route path="/signup" element={<Signup />} /> 
            <Route path="/Login" element={<Login/>} /> 
            <Route path="/Editdetails" element={<EditDetails/>} /> 
-           <Route path="/Womencommunity" element={<Womendes/>} /> 
+           <Route path="/Womencommunity" element={<Womendes/>} />
+           <Route path="/ManageQuestions" element={<ManageQuestions/>} /> 
+           <Route path="/ManagePosts" element={<ManagePosts/>} /> 
+
            <Route path="*" element={<h1>Error 404 page not found</h1>} /> 
         </Routes>
             <div className={style.part3}>
