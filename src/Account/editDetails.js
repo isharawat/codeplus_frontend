@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import style from './Account.module.css';
 const EditDetails = ({credentials,setCredentials}) => {
     const initialvalues={firstname:"",lastname:"",codeforces:"",codechef:"",atcoder:"",leetcode:"",hackerearth:""}
     const [formvalues,setformvalues]=useState(credentials)
@@ -29,32 +30,34 @@ const EditDetails = ({credentials,setCredentials}) => {
     }
 
     return ( 
-        <div className={style.outer}>
-            
+        
+            <div className={style.EditDetails}>
             <form onSubmit={handleSubmit}>
                 <div>
                     <h3>Personal Details</h3>
                 </div>
-        <div className={style.form}>
+        
                 <div className={style.label}>
                     <label>
-                        First Name
+                        First Name:  
                     <input 
                         type="text" 
                         name="firstName"
                         value={formvalues.firstName}
                         onChange={handleChange}
+                        className={style.input}
                     />
                     </label>
                 </div>
                 <div className={style.label}>
                     <label >
-                        Last Name
+                        Last Name: 
                     <input 
                         type="text" 
                         name="lastName"
                         value={formvalues.lastName}
                         onChange={handleChange}
+                        className={style.input}
                     />
                     </label>
                 </div>
@@ -64,56 +67,61 @@ const EditDetails = ({credentials,setCredentials}) => {
                 </div>
                 <div className={style.label}>
                     <label>
-                        Codeforces
+                        Codeforces: 
                     <input 
                         type="text" 
                         name="codeForces"
                         value={formvalues.codeForces}
                         onChange={handleChange}
+                        className={style.input}
                     />
                     </label>
                 </div>
                 <div className={style.label}>
                     <label >
-                        Atcoder
+                        Atcoder: 
                     <input 
                         type="text" 
                         name="atCoder"
                         value={formvalues.atCoder}
                         onChange={handleChange}
+                        className={style.input}
                     />
                     </label>
                 </div>
                 <div className={style.label}>
                     <label >
-                        Codechef
+                        Codechef: 
                     <input 
                         type="text" 
                         name="codechef"
                         value={formvalues.codechef}
                         onChange={handleChange}
+                        className={style.input}
                     />
                     </label>
                 </div>
                 <div className={style.label}>
                     <label >
-                        Leetcode
+                        Leetcode: 
                     <input
                         type="text" 
                         name="leetcode"
                         value={formvalues.leetcode}
                         onChange={handleChange}
+                        className={style.input}
                     />
                     </label>
                 </div>
                 <div className={style.label}>
                     <label >
-                        Hackerearth
+                        Hackerearth: 
                     <input
                         type="text" 
                         name="hackerEarth"
                         value={formvalues.hackerEarth}
                         onChange={handleChange}
+                        className={style.input}
                     />
                     </label>
                 </div>
@@ -122,7 +130,6 @@ const EditDetails = ({credentials,setCredentials}) => {
                 </div>
                 <div className={style.buttonbox}>
                 <button className={style.button}  >Back to Home</button>
-            </div>
             </div>
             </form>
         </div>

@@ -1,3 +1,8 @@
+
+.EditDetails{
+    background-color: #D8E4E8;
+}
+
 .outer{
     display: grid;
     background-color: #052E3B;
@@ -20,7 +25,6 @@
     padding: 20px 20px;
     color: #D8E4E8;
     border-radius: 0px 20px 20px 0px;
-   
 }
 .btn{
     display: grid;
