@@ -71,7 +71,7 @@ function App() {
            <Route path="/Editdetails" element={<EditDetails setCredentials={setCredentials} credentials={credentials}/>} /> 
            <Route path="/Womencommunity" element={<Womendes/>} />
            <Route path="/ManageQuestions" element={<ManageQuestions/>} /> 
-           <Route path="/ManagePosts" element={<ManagePosts/>} /> 
+           <Route path="/ManagePosts" element={<ManagePosts credentials={credentials}/>} /> 
 
            <Route path="*" element={<h1>Error 404 page not found</h1>} /> 
         </Routes>

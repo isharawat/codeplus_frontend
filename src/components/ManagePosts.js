@@ -1,9 +1,10 @@
 
 import {setState, useState} from 'react';
 import styles from '../styles/Post.module.css';
+import Axios from 'axios';
 
-export default function ManageQuestions(){
-    const initialvalues={title:"",body: "" }
+export default function ManageQuestions({credentials}){
+    const initialvalues={title:"",body: "",comments:[], name:`${credentials.firstName} ${credentials.lastName}` }
     const [formvalues,setformvalues]=useState(initialvalues)
 
     const handleChange =(e)=>{
@@ -13,6 +14,18 @@ export default function ManageQuestions(){
     
     const handleSubmit=(e)=>{
        e.preventDefault();
+       Axios.post('http://localhost:3001/add-posts',formvalues).then(res => {
+           console.log(res)
+        if(res.data.status==="Posted Successfully"){
+            alert("post Added Successfully");
+            setformvalues(initialvalues)
+
+        }
+        else{
+            alert("Unable to add the question");
+        }
+      })    
+
     }
     return( 
         <div>

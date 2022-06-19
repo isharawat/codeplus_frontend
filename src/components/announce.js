@@ -9,15 +9,7 @@ import Post from "./Post";
 export default function Announce() {
   return (
     <div>
-      <div>
-        <Announcement />
-      </div>
-      <div>
-        <Announcement />
-      </div>
-      <div>
-        <Announcement />
-      </div>
+     
       <div>
         <Post />
       </div>
