@@ -1,31 +1,41 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import style from "./Account.module.css";
+import axios from "axios";
 
 const Signup = () => {
 
-  const initialvalues = {
-    firstname: "",
-    lastname: "",
-    email: "",
-    password: "",
-    codeforces: "",
-    codechef: "",
-    atcoder: "",
-    leetcode: "",
-    hackerearth: "",
+  const initialvalues ={isLoggedin :false, isAdmin :false, firstName :'', codechef: '',
+   lastName :'', codeForces :'', atCoder :'', hackerEarth :'', leetcode :'',
+   emailId :'', password : '' 
   };
 
   const [formvalues, setformvalues] = useState(initialvalues);
- 
+  const navigate=useNavigate();
   
   const handleChange = (e) => {
     const { name, value } = e.target;
     setformvalues({ ...formvalues, [name]: value });
   };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formvalues.emailId)
+
+    if(formvalues.emailId&&formvalues.password){
+      axios.post("http://localhost:3001/register",formvalues )
+      .then(res=>console.log(res))
+   }
+        //Axios request
+       // if success
+         navigate("/Login");
+        // setCredentials(initialvalues)
+
+    // 
+    // else message signup again 
+    // setformvalues(initialvalues);
+    
+
   };
 
   return (
@@ -57,8 +67,8 @@ const Signup = () => {
                   First Name
                   <input
                     type="text"
-                    name="firstname"
-                    value={formvalues.firstname}
+                    name="firstName"
+                    value={formvalues.firstName}
                     onChange={handleChange}
                     className={style.input}
                   />
@@ -69,8 +79,8 @@ const Signup = () => {
                   Last Name
                   <input
                     type="text"
-                    name="lastname"
-                    value={formvalues.lastname}
+                    name="lastName"
+                    value={formvalues.lastName}
                     onChange={handleChange}
                     className={style.input}
                   />
@@ -81,8 +91,8 @@ const Signup = () => {
                   College Email Id
                   <input
                     type="text"
-                    name="email"
-                    value={formvalues.email}
+                    name="emailId"
+                    value={formvalues.emailId}
                     onChange={handleChange}
                     className={style.input}
                   />
@@ -110,8 +120,8 @@ const Signup = () => {
                   Codeforces
                   <input
                     type="text"
-                    name="codeforces"
-                    value={formvalues.codeforces}
+                    name="codeForces"
+                    value={formvalues.codeForces}
                     onChange={handleChange}
                     className={style.input}
                   />
@@ -122,8 +132,8 @@ const Signup = () => {
                   Atcoder
                   <input
                     type="text"
-                    name="atcoder"
-                    value={formvalues.atcoder}
+                    name="atCoder"
+                    value={formvalues.atCoder}
                     onChange={handleChange}
                     className={style.input}
                   />
@@ -158,8 +168,8 @@ const Signup = () => {
                   Hackerearth
                   <input
                     type="text"
-                    name="hackerearth"
-                    value={formvalues.hackerearth}
+                    name="hackerEarth"
+                    value={formvalues.hackerEarth}
                     onChange={handleChange}
                     className={style.input}
                   />
