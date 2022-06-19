@@ -1,4 +1,5 @@
 import { useState } from "react";
+import style from "./Account.module.css";
 
 const EditDetails = () => {
     const initialvalues={firstname:"",lastname:"",codeforces:"",codechef:"",atcoder:"",leetcode:"",hackerearth:""}
@@ -13,13 +14,14 @@ const EditDetails = () => {
     }
 
     return ( 
-        <div>
+        <div className={style.outer}>
             
             <form onSubmit={handleSubmit}>
                 <div>
                     <h3>Personal Details</h3>
                 </div>
-                <div>
+        <div className={style.form}>
+                <div className={style.label}>
                     <label>
                         First Name
                     <input 
@@ -30,7 +32,7 @@ const EditDetails = () => {
                     />
                     </label>
                 </div>
-                <div>
+                <div className={style.label}>
                     <label >
                         Last Name
                     <input 
@@ -45,7 +47,7 @@ const EditDetails = () => {
                 <div>
                     <h3>Please provide handle name of the following:</h3>
                 </div>
-                <div>
+                <div className={style.label}>
                     <label>
                         Codeforces
                     <input 
@@ -56,7 +58,7 @@ const EditDetails = () => {
                     />
                     </label>
                 </div>
-                <div>
+                <div className={style.label}>
                     <label >
                         Atcoder
                     <input 
@@ -67,7 +69,7 @@ const EditDetails = () => {
                     />
                     </label>
                 </div>
-                <div>
+                <div className={style.label}>
                     <label >
                         Codechef
                     <input 
@@ -78,7 +80,7 @@ const EditDetails = () => {
                     />
                     </label>
                 </div>
-                <div>
+                <div className={style.label}>
                     <label >
                         Leetcode
                     <input
@@ -89,7 +91,7 @@ const EditDetails = () => {
                     />
                     </label>
                 </div>
-                <div>
+                <div className={style.label}>
                     <label >
                         Hackerearth
                     <input
@@ -100,11 +102,14 @@ const EditDetails = () => {
                     />
                     </label>
                 </div>
-                <div>
-                    <button>Save Changes</button>
+                <div className={style.buttonbox}>
+                  <button className={style.button} >Save Changes</button>
                 </div>
+                <div className={style.buttonbox}>
+                <button className={style.button}  >Back to Home</button>
+            </div>
+            </div>
             </form>
-            <button >Back to Home</button>
         </div>
      );
 }

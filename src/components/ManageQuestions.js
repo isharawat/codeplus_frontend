@@ -5,7 +5,9 @@ import Axios from 'axios';
 export default function ManageQuestions(){
         
     const [question, setName] = useState('')
-    const [points, setPoints] = useState('0')
+
+    const [url, setUrl] = useState('')
+        const [points, setPoints] = useState('0')
     const [msg,setMsg]= useState("Please add a new question.");
     //adding question
     
@@ -27,7 +29,7 @@ export default function ManageQuestions(){
         <label htmlFor="">Question name : </label>
         <input type="text" onChange={(e) => {setName(e.target.value)}}/><br/><br/>
         <label htmlFor="">Question link : </label>
-        <input type="text" onChange={(e) => {setName(e.target.value)}}/><br/><br/>
+        <input type="text" onChange={(e) => {setUrl(e.target.value)}}/><br/><br/>
         <label htmlFor="">Points: </label>
         <input type="number" onChange={(e) => {setPoints(e.target.value)}}/><br/><br/>
         <button onClick={addNewQuestion}>Add New Question</button>
