@@ -5,9 +5,8 @@ import Axios from 'axios';
 export default function ManageQuestions(){
         
     const [question, setName] = useState('')
-
     const [url, setUrl] = useState('')
-        const [points, setPoints] = useState('0')
+    const [points, setPoints] = useState(0)
     const [msg,setMsg]= useState("Please add a new question.");
     //adding question
     
@@ -15,6 +14,10 @@ export default function ManageQuestions(){
        Axios.post('http://localhost:3001/add-question',{question,url,points}).then(res => {
         if(res.data.status=="Success"){
             setMsg("Question Added Successfully");
+            setName('');
+            setUrl('');
+            setPoints(0);
+
         }
         else{
             setMsg("Unable to add the question");
@@ -27,11 +30,11 @@ export default function ManageQuestions(){
             <h1>{msg}</h1>
         <div className="container">
         <label htmlFor="">Question name : </label>
-        <input type="text" onChange={(e) => {setName(e.target.value)}}/><br/><br/>
+        <input type="text" value={question} onChange={(e) => {setName(e.target.value)}}/><br/><br/>
         <label htmlFor="">Question link : </label>
-        <input type="text" onChange={(e) => {setUrl(e.target.value)}}/><br/><br/>
+        <input type="text" value={url} onChange={(e) => {setUrl(e.target.value)}}/><br/><br/>
         <label htmlFor="">Points: </label>
-        <input type="number" onChange={(e) => {setPoints(e.target.value)}}/><br/><br/>
+        <input type="number" value={points} onChange={(e) => {setPoints(e.target.value)}}/><br/><br/>
         <button onClick={addNewQuestion}>Add New Question</button>
 
     </div> 

@@ -1,9 +1,8 @@
 import { useState } from "react";
-import style from "./Account.module.css";
-
-const EditDetails = () => {
+import axios from "axios";
+const EditDetails = ({credentials,setCredentials}) => {
     const initialvalues={firstname:"",lastname:"",codeforces:"",codechef:"",atcoder:"",leetcode:"",hackerearth:""}
-    const [formvalues,setformvalues]=useState(initialvalues)
+    const [formvalues,setformvalues]=useState(credentials)
     const handleChange =(e)=>{
         const {name,value}=e.target
         setformvalues({ ...formvalues,[name]:value})
@@ -11,6 +10,22 @@ const EditDetails = () => {
     
     const handleSubmit=(e)=>{
        e.preventDefault();
+       console.log(formvalues.emailId)
+
+    
+      axios.patch(`http://localhost:3001/editdetails/${formvalues.id}`,formvalues )
+      .then(res=>{
+          const msg=res.data.status
+          console.log(msg)
+          if(msg==="Successfully updated the user"){
+             const result=res.data.data.updateduser;
+             setCredentials({isLoggedin :true, isAdmin :result.isAdmin, firstName :result.firstName, codechef: result.codechef,
+                lastName :result.lastName, codeForces :result.codeForces, atCoder :result.atCoder, hackerEarth :result.hackerEarth, leetcode :result.leetcode, 
+                id: result._id, emailId :result.emailId, password : result.password})
+          }
+          alert(msg)
+      })
+
     }
 
     return ( 
@@ -26,8 +41,8 @@ const EditDetails = () => {
                         First Name
                     <input 
                         type="text" 
-                        name="firstname"
-                        value={formvalues.firstname}
+                        name="firstName"
+                        value={formvalues.firstName}
                         onChange={handleChange}
                     />
                     </label>
@@ -37,8 +52,8 @@ const EditDetails = () => {
                         Last Name
                     <input 
                         type="text" 
-                        name="lastname"
-                        value={formvalues.lastname}
+                        name="lastName"
+                        value={formvalues.lastName}
                         onChange={handleChange}
                     />
                     </label>
@@ -52,8 +67,8 @@ const EditDetails = () => {
                         Codeforces
                     <input 
                         type="text" 
-                        name="codeforces"
-                        value={formvalues.codeforces}
+                        name="codeForces"
+                        value={formvalues.codeForces}
                         onChange={handleChange}
                     />
                     </label>
@@ -63,8 +78,8 @@ const EditDetails = () => {
                         Atcoder
                     <input 
                         type="text" 
-                        name="atcoder"
-                        value={formvalues.atcoder}
+                        name="atCoder"
+                        value={formvalues.atCoder}
                         onChange={handleChange}
                     />
                     </label>
@@ -96,8 +111,8 @@ const EditDetails = () => {
                         Hackerearth
                     <input
                         type="text" 
-                        name="hackerearth"
-                        value={formvalues.hackerearth}
+                        name="hackerEarth"
+                        value={formvalues.hackerEarth}
                         onChange={handleChange}
                     />
                     </label>
