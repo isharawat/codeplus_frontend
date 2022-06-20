@@ -40,12 +40,7 @@ const Signup = () => {
 
   return (
     <div className={style.outer}>
-      <div className={style.codeplus}>
-        <h1>CodePlus</h1>
-        <p className={style.p}>
-
-        </p>
-      </div>
+      
       <div className={style.account}>
         <div className={style.btn}>
           <div></div>
