@@ -5,6 +5,7 @@
 
 .outer{
     display: grid;
+
     background-color: #052E3B;
     grid-template-columns: 1.5fr 1fr;
     padding: 40px;
