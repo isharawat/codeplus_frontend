@@ -43,7 +43,7 @@ const Signup = () => {
       <div className={style.codeplus}>
         <h1>CodePlus</h1>
         <p className={style.p}>
-          jjhkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjhgftrdeswasedrftgyhjk
+          jjhkjjjjjjjjjjjjjjj
         </p>
       </div>
       <div className={style.account}>

@@ -5,10 +5,8 @@
 
 .outer{
     display: grid;
-    background-color: #052E3B;
-    grid-template-columns: 1fr 1fr;
-    padding: 80px;
-    height: 120vh;
+    grid-template-columns: 1.5fr 1fr;
+    padding: 40px;
 }
 .codeplus{
     background-color: #D8E4E8;
