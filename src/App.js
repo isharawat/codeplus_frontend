@@ -62,7 +62,7 @@ function App() {
           <div className={style.part2}>
           <Routes>
           {/* <Route path="/Colors" element={isloggedin?<Colors/>:<Navigate to="/Login" state={data}/>}/> */}
-          <Route path="/" element={<Announce/>}/>
+          <Route path="/" element={<Announce credentials={credentials} />}/>
            <Route path="/Discussions" element={<Discussions/>} /> 
            <Route path="/Leaderboard" element={<MainLeaderboard/>} /> 
            <Route path="/Questions" element={credentials.isLoggedin?<Question/>:<Login setCredentials={setCredentials} message={'Login First'}/>}/> 

@@ -2,7 +2,7 @@ import styles from "../styles/contestReminder.module.css";
 import mypic from "./codeforceslog.jpg";
 function ContestComponent() {
   return (
-   
+
       <div className={styles.contest}>
         <div className={styles.platform_logo}>
           <img

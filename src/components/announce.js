@@ -6,12 +6,12 @@ import style from "../styles/Home.module.css";
 import Announcement from "./announcement";
 import Post from "./Post";
 
-export default function Announce() {
+export default function Announce({credentials}) {
   return (
     <div>
      
       <div>
-        <Post />
+        <Post credentials={credentials} />
       </div>
   
     </div>
