@@ -37,7 +37,7 @@ export default function ManageQuestions() {
         <input
           type="text"
           value={question}
-          className={style.input}
+          className={style.input1}
           onChange={(e) => {
             setName(e.target.value);
           }}
@@ -49,7 +49,7 @@ export default function ManageQuestions() {
         <input
           type="text"
           value={url}
-          className={style.input}
+          className={style.input1}
           onChange={(e) => {
             setUrl(e.target.value);
           }}
@@ -61,7 +61,7 @@ export default function ManageQuestions() {
         <input
           type="number"
           value={points}
-          className={style.input}
+          className={style.input1}
           onChange={(e) => {
             setPoints(e.target.value);
           }}

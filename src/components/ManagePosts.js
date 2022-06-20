@@ -2,7 +2,7 @@
 import {setState, useState} from 'react';
 import styles from '../styles/Post.module.css';
 import Axios from 'axios';
-
+import style from  '../Account/Account.module.css'
 export default function ManageQuestions({credentials}){
     const initialvalues={title:"",body: "",comments:[], name:`${credentials.firstName} ${credentials.lastName}` }
     const [formvalues,setformvalues]=useState(initialvalues)
@@ -28,29 +28,34 @@ export default function ManageQuestions({credentials}){
 
     }
     return( 
-        <div>
-        <div className={styles.post}>
-            <form onSubmit={handleSubmit}>
-            <label>
-                   <h1>Title: </h1>
+        <div className={style.outer1}>
+        <div className={style.box}>
+            <form onSubmit={handleSubmit} className={ style.form}>
+                <div>
+            <label className={style.label}>
+                   Title: </label>
                     <input 
                         type="text" 
                         name="title"
                         value={formvalues.title}
                         onChange={handleChange}
+                        className={style.input1}
                     />
-                    </label>
-                    <label>
-                  <h1>Body:  </h1>
+                    </div>
+                    <div>
+                    <label className={style.label}>
+                  Body: </label>
                     <input 
                         type="textarea" 
                         name="body"
                         value={formvalues.body}
                         onChange={handleChange}
+                        className={style.input1}
                     />
-                    </label>
-
-                <button >Submit</button>
+                    </div>
+                    <div className={style.buttonbox}>
+          <button className={style.button}  >Sumbit</button>
+        </div>
             </form>
         </div>
         
