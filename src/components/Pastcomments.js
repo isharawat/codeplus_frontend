@@ -1,8 +1,11 @@
-export default function Pastcomments() {
+import Reply from "./Reply";
+export default function Pastcomments({comments}) {
+    console.log(comments)
     return (
-      <div>
+      comments.map((obj,key)=>{
+           return <div key={key}><Reply obj={obj}/></div>
+           
+      })
 
-       sac
-      </div>
     );
   }

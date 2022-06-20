@@ -9,8 +9,9 @@ import Comment from "./Comment";
 import Pastcomments from "./Pastcomments";
 
 
-export default function Post() {
+export default function Post({credentials}) {
     const initialvalues={title:"",body: "",comments:[], name:'',id:'' }
+    
     const [post, setPost] = useState([])
 
     useEffect(() => {
@@ -50,9 +51,9 @@ export default function Post() {
                                         style={{ fontSize: 15, color: "black", cursor: "pointer" }}
                                     />
                                 </div>
-                                <Pastcomments/>
+                                <Pastcomments comments={obj.comments}/>
 
-                                <Comment/>
+                                <Comment obj={obj} credentials={credentials}/>
                             </div>
                             {/* <div className={styles.post}>
                 <form>
