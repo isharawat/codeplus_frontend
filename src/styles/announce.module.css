@@ -19,6 +19,12 @@
     margin-block-start: 0.4em;
     margin-block-end: 0.4em;
 }
+.postedByp{
+    display: grid;
+    grid-template-columns: 15fr 1fr;
+    font-size: 10px;
+    margin-bottom: 20px;
+}
 .postedBy{
     display: grid;
     grid-template-columns: 15fr 1fr;

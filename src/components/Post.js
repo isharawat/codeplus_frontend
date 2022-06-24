@@ -30,12 +30,13 @@ export default function Post({ credentials }) {
             return (
               <div key={key}>
                 <div className={styles.container}>
+             
                   <h3>Title: {obj.title} </h3>
                   <p>{obj.body}</p>
                   <hr className={styles.line}></hr>
-                  <div className={styles.postedBy}>
+                  <div className={styles.postedByp} >
                     <div>
-                      <span style={{ marginLeft: "10px" }}>
+                      <span style={{ marginLeft: "10px"}}>
                         <FontAwesomeIcon
                           icon={faUser}
                           className={styles.icon}
@@ -46,6 +47,7 @@ export default function Post({ credentials }) {
                       <span></span>
                       <span className={styles.time}>date&time</span>
                     </div>
+                
                     <FontAwesomeIcon
                       icon={faComment}
                       className={styles.icon}
