@@ -3,7 +3,8 @@ import {setState, useState} from 'react';
 import styles from '../styles/Post.module.css';
 import Axios from 'axios';
 import style from  '../Account/Account.module.css'
-export default function ManageQuestions({credentials}){
+
+export default function ManagePosts({credentials}){
     const initialvalues={title:"",body: "",comments:[], name:`${credentials.firstName} ${credentials.lastName}` }
     const [formvalues,setformvalues]=useState(initialvalues)
 
@@ -22,7 +23,7 @@ export default function ManageQuestions({credentials}){
 
         }
         else{
-            alert("Unable to add the question");
+            alert("Unable to add the post");
         }
       })    
 

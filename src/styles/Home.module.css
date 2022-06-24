@@ -3,7 +3,8 @@
     grid-template-columns: 1fr 5fr;
 }
 .part1{
-    display:grid;
+    display: grid;
+    grid-template-rows: 0.2fr 1fr;
 }
 .part2{
     display:grid;

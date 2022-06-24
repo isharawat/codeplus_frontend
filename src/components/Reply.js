@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faUser } from "@fortawesome/free-solid-svg-icons";
 export default function Reply({obj}){
     return(
-        <div>
+   
             <div className={styles.reply}>
-              <p>{obj?obj.comment:'not there '}</p>
+              <p className={styles.p}>{obj?obj.comment:'not there '}</p>
               <hr className={styles.line}></hr>
               <div className={styles.postedBy}>
                 <div>
@@ -18,7 +18,6 @@ export default function Reply({obj}){
                 </div>
               </div>
             </div>
-          </div>
 
     );
 }

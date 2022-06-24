@@ -10,8 +10,11 @@
     display: grid;
     grid-template-columns: 8fr 1fr;
 }
-.submit{
+.btn{
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #D8E4E8;
+    border: none;
+    cursor: pointer;
 }

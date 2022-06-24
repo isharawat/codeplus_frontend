@@ -1,11 +1,10 @@
-import stylep from "../styles/Home.module.css";
-
+import styles from "../styles/womenDes.module.css";
 import style from "../Account/Account.module.css";
 import Axios from "axios";
 import { setState, useState } from "react";
-import DiscussionPost from "./DiscussionPost";
+import WomenPost from "./WomenPost";
 
-export default function Discussions({ credentials }) {
+export default function WomenDes({ credentials }) {
   const initialvalues = {
     title: "",
     body: "",
@@ -21,11 +20,11 @@ export default function Discussions({ credentials }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:3001/add-discussion", formvalues).then(
+    Axios.post("http://localhost:3001/add-women-post", formvalues).then(
       (res) => {
         console.log(res);
-        if (res.data.status === "Doubt Posted Successfully") {
-          alert("doubt added Successfully");
+        if (res.data.status === "Posted Successfully") {
+          alert("post Added Successfully");
           setformvalues(initialvalues);
         } else {
           alert("Unable to add");
@@ -34,8 +33,14 @@ export default function Discussions({ credentials }) {
     );
   };
   return (
-    <div >
-          <div className={style.box} style={{padding:"20px", margin: "10px", borderRadius:"15px",}}>
+    <div>
+      <div className={styles.description}>
+        <h3>Women Community</h3>
+        <p>
+          Please Share Any useful Information or new opportunities for girls.
+        </p>
+        <div className={styles.createpost}>
+          <div className={style.box}>
             <form onSubmit={handleSubmit} className={style.form}>
               <div>
                 <label className={style.label}>Title: </label>
@@ -62,11 +67,11 @@ export default function Discussions({ credentials }) {
               </div>
             </form>
           </div>
-        
-      <div>
-        <DiscussionPost credentials={credentials} />
+        </div>
       </div>
-  </div>
+      <div>
+        <WomenPost credentials={credentials} />
+      </div>
+    </div>
   );
 }
-

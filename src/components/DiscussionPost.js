@@ -4,20 +4,20 @@ import { useEffect } from "react";
 import styles from "../styles/announce.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faUser } from "@fortawesome/free-solid-svg-icons";
-import Comment from "./Comment";
+import DiscussionComment from "./DiscussionComment";
 import Pastcomments from "./Pastcomments";
 
-export default function Post({ credentials }) {
-  const initialvalues = { title: "", body: "", comments: [], name: "", id: "" };
 
-  const [post, setPost] = useState([]);
+export default function DiscussionPost({ credentials }) {
 
+  const [discussions, setDiscussions] = useState([]);
+  
   useEffect(() => {
-    Axios.get("http://localhost:3001/get-posts").then((res) => {
-      //setQuestions(res.data.data.questions)
+    Axios.get("http://localhost:3001/get-discussions").then((res) => {
+    
       console.log(res.data);
-      setPost(res.data.data.posts);
-      console.log(post);
+      setDiscussions(res.data.data.discussions);
+      console.log(discussions);
     });
   }, []);
 
@@ -25,7 +25,7 @@ export default function Post({ credentials }) {
     <>
       <div>
         <ul>
-          {post.map((obj, key) => {
+          {discussions.map((obj, key) => {
             console.log(obj);
             return (
               <div key={key}>
@@ -54,11 +54,13 @@ export default function Post({ credentials }) {
                         color: "black",
                         cursor: "pointer",
                       }}
+          
                     />
                   </div>
-                  <Pastcomments comments={obj.comments} />
-
-                  <Comment obj={obj} credentials={credentials} />
+                 <div><Pastcomments comments={obj.comments}/>
+                  <DiscussionComment obj={obj} credentials={credentials}/></div>
+                    
+                 
                 </div>
               </div>
             );

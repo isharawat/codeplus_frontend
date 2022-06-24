@@ -51,7 +51,7 @@ export default function Menubar() {
           </NavLink>
         </button>
         <button className={styles.menubutton}>
-          <NavLink to ="./Womencommunity">
+          <NavLink to ="./WomenDes">
             <div className={styles.menucontent}>
               <span style={{ marginRight: "20px" }}>
                 <FontAwesomeIcon icon={faVenus} className={styles.icon} />

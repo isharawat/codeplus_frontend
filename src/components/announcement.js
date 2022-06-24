@@ -4,7 +4,6 @@ import { faComment, faUser } from "@fortawesome/free-solid-svg-icons";
 
 export default function Announcement() {
   return (
-    <div>
       <div className={styles.container}>
         <h3>Title: </h3>
         <p>dfjsksdfkjslkfjkfjakl</p>
@@ -25,6 +24,5 @@ export default function Announcement() {
           />
         </div>
       </div>
-    </div>
   );
 }

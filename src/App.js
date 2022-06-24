@@ -11,7 +11,7 @@ import EditDetails from './Account/editDetails';
 import Login from './Account/login';
 import Signup from './Account/signup';
 import Topbar from "./components/topbar";
-import Womendes from './WomenCommunity/womenDes';
+import Womendes from './components/WomenDes';
 import style from "./styles/Home.module.css";
 import ContestReminder from './components/contestReminder';
 import { BrowserRouter, Route, Routes, NavLink, Navigate } from "react-router-dom"
@@ -53,23 +53,26 @@ function App() {
   },[credentials]);
   
   return (
-    <BrowserRouter>
+    <BrowserRouter  >
       
       <div className={style.app}>
+        <div style={{position: "-webkit-sticky", position: "sticky" ,top: "0", left:"0",alignSelf: "start"}}>
         <Menubar />
-        <div className={style.part1}>
-          <Topbar credentials={credentials} setCredentials = {setCredentials}/>
+        </div>
+        <div >
+          <div  style={{position: "-webkit-sticky", position: "sticky" ,top: "0"}}> <Topbar credentials={credentials} setCredentials = {setCredentials}/></div>
+         
           <div className={style.part2}>
           <Routes>
           {/* <Route path="/Colors" element={isloggedin?<Colors/>:<Navigate to="/Login" state={data}/>}/> */}
           <Route path="/" element={<Announce credentials={credentials} />}/>
-           <Route path="/Discussions" element={<Discussions/>} /> 
+           <Route path="/Discussions" element={<Discussions credentials={credentials}/>} /> 
            <Route path="/Leaderboard" element={<MainLeaderboard/>} /> 
            <Route path="/Questions" element={credentials.isLoggedin?<Question/>:<Login setCredentials={setCredentials} message={'Login First'}/>}/> 
            <Route path="/signup" element={<Signup />} /> 
            <Route path="/Login" element={<Login setCredentials={setCredentials} message={''}/>} /> 
            <Route path="/Editdetails" element={<EditDetails setCredentials={setCredentials} credentials={credentials}/>} /> 
-           <Route path="/Womencommunity" element={<Womendes/>} />
+           <Route path="/WomenDes" element={<Womendes credentials={credentials}/>} />
            <Route path="/ManageQuestions" element={<ManageQuestions/>} /> 
            <Route path="/ManagePosts" element={<ManagePosts credentials={credentials}/>} /> 
 
@@ -81,7 +84,7 @@ function App() {
             </div>
           </div>
         </div>
-      </div>
+    </div>
        
     </BrowserRouter>
 

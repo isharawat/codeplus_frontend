@@ -95,9 +95,9 @@ const handleChange = (e) => {
           <h3>Fill your account Details:</h3>
         </div>
         <div className={style.form}>
-          <div className={style.label}>
-            <label>
-              College Email Id
+          <div >
+            <label className={style.label}>
+              College Email Id:   </label>
               <input
                 type="text"
                 name="emailId"
@@ -105,11 +105,11 @@ const handleChange = (e) => {
                 onChange={handleChange}
                 className={style.input}
               />
-            </label>
+         
           </div>
-          <div className={style.label}>
-            <label>
-              Password
+          <div>
+            <label className={style.label}>
+              Password:</label>
               <input
                 type="text"
                 name="password"
@@ -117,7 +117,7 @@ const handleChange = (e) => {
                 onChange={handleChange}
                 className={style.input}
               />
-            </label>
+            
           </div>
         </div>
         <div className={style.label}>

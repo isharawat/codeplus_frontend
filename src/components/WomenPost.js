@@ -4,20 +4,20 @@ import { useEffect } from "react";
 import styles from "../styles/announce.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faUser } from "@fortawesome/free-solid-svg-icons";
-import Comment from "./Comment";
+import WomenComment from "./WomenComment";
 import Pastcomments from "./Pastcomments";
 
-export default function Post({ credentials }) {
-  const initialvalues = { title: "", body: "", comments: [], name: "", id: "" };
 
-  const [post, setPost] = useState([]);
+export default function WomenPost({ credentials }) {
+
+  const [womenpost, setWomenPost] = useState([]);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/get-posts").then((res) => {
-      //setQuestions(res.data.data.questions)
+    Axios.get("http://localhost:3001/get-women-posts").then((res) => {
+    
       console.log(res.data);
-      setPost(res.data.data.posts);
-      console.log(post);
+      setWomenPost(res.data.data.womenposts);
+      console.log(womenpost);
     });
   }, []);
 
@@ -25,7 +25,7 @@ export default function Post({ credentials }) {
     <>
       <div>
         <ul>
-          {post.map((obj, key) => {
+          {womenpost.map((obj, key) => {
             console.log(obj);
             return (
               <div key={key}>
@@ -56,9 +56,8 @@ export default function Post({ credentials }) {
                       }}
                     />
                   </div>
-                  <Pastcomments comments={obj.comments} />
-
-                  <Comment obj={obj} credentials={credentials} />
+                  <Pastcomments comments={obj.comments}/>
+                  <WomenComment obj={obj} credentials={credentials} />
                 </div>
               </div>
             );

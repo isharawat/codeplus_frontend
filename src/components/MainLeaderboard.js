@@ -15,7 +15,6 @@ function LeaderboardName() {
 
 export default function MainLeaderboard() {
   return (
-    <div >
       <div>
         <div className={styles.button}>
           <button className={styles.buttoncom}>Leaderboard</button>
@@ -37,6 +36,6 @@ export default function MainLeaderboard() {
           <LeaderboardName />
         </ul>
       </div>
-    </div>
+
   );
 }
