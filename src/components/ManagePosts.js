@@ -4,29 +4,36 @@ import styles from '../styles/Post.module.css';
 import Axios from 'axios';
 import style from  '../Account/Account.module.css'
 
-export default function ManagePosts({credentials}){
-    const initialvalues={title:"",body: "",comments:[], name:`${credentials.firstName} ${credentials.lastName}` }
+export default function ManagePosts(){
+    const user=JSON.parse(localStorage.getItem("User"));
+    const initialvalues={title:"",body: "",comments:[], name:`${user.firstName} ${user.lastName}` }
     const [formvalues,setformvalues]=useState(initialvalues)
-
+    const addADiscuss = async(values) =>{
+      console.log(values)
+      const request = {
+        ...values
+      }
+      console.log(request);
+      const  headers = {
+        'Content-Type': 'application/json',
+        'auth-token': localStorage.getItem("token")
+    }
+      const response = await Axios.post("http://localhost:3001/posts/add-posts",request,{headers})
+      setformvalues(formvalues.concat(response.data))
+  }
     const handleChange =(e)=>{
         const {name,value}=e.target
         setformvalues({ ...formvalues,[name]:value})
     }
     
     const handleSubmit=(e)=>{
-       e.preventDefault();
-       Axios.post('http://localhost:3001/add-posts',formvalues).then(res => {
-           console.log(res)
-        if(res.data.status==="Posted Successfully"){
-            alert("post Added Successfully");
-            setformvalues(initialvalues)
+        e.preventDefault();
 
-        }
-        else{
-            alert("Unable to add the post");
-        }
-      })    
-
+        addADiscuss({...formvalues}) 
+        setformvalues({ title: "",
+        body: "",
+        comments: [],
+        name: `${user.firstName} ${user.lastName}`})   
     }
     return( 
         <div className={style.outer1}>

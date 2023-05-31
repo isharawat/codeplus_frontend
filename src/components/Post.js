@@ -1,26 +1,36 @@
 import { useState } from "react";
 import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import styles from "../styles/announce.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faUser } from "@fortawesome/free-solid-svg-icons";
 import Comment from "./Comment";
-import Pastcomments from "./Pastcomments";
 
-export default function Post({ credentials }) {
-  const initialvalues = { title: "", body: "", comments: [], name: "", id: "" };
+export default function Post({credentials}) {
 
   const [post, setPost] = useState([]);
 
+ const history=useNavigate();
   useEffect(() => {
-    Axios.get("http://localhost:3001/get-posts").then((res) => {
-      //setQuestions(res.data.data.questions)
-      console.log(res.data);
-      setPost(res.data.data.posts);
-      console.log(post);
+    if (localStorage.getItem("token")) {
+      const headers= {
+        'Content-Type': 'application/json',
+        'auth-token': localStorage.getItem("token")
+    }
+      Axios.get("http://localhost:3001/posts/get-posts",{headers}).then((res) => {
+        //setQuestions(res.data.data.questions)
+         
+        console.log(res.data);
+        setPost(res.data.data.posts);
+        console.log(post);
     });
-  }, []);
-
+    }
+    else {
+        history("/login")
+    }
+    // eslint-disable-next-line
+}, [])
   return (
     <>
       <div>
@@ -58,7 +68,6 @@ export default function Post({ credentials }) {
                       }}
                     />
                   </div>
-                  <Pastcomments comments={obj.comments} />
 
                   <Comment obj={obj} credentials={credentials} />
                 </div>

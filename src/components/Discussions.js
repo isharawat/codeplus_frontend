@@ -1,38 +1,53 @@
 import stylep from "../styles/Home.module.css";
-
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import style from "../Account/Account.module.css";
 import Axios from "axios";
 import { setState, useState } from "react";
 import DiscussionPost from "./DiscussionPost";
 
-export default function Discussions({ credentials }) {
+export default function Discussions() {
+    
+  
+  const user=JSON.parse(localStorage.getItem("User"));
   const initialvalues = {
     title: "",
     body: "",
     comments: [],
-    name: `${credentials.firstName} ${credentials.lastName}`,
+    name: `${user.firstName} ${user.lastName}`,
   };
   const [formvalues, setformvalues] = useState(initialvalues);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setformvalues({ ...formvalues, [name]: value });
-  };
-
+  const addADiscuss = async(values) =>{
+    console.log(values)
+    const request = {
+      ...values
+    }
+    console.log(request);
+    const  headers = {
+      'Content-Type': 'application/json',
+      'auth-token': localStorage.getItem("token")
+  }
+    const response = await Axios.post("http://localhost:3001/discussion/add-discussion",request,{headers})
+    setformvalues(formvalues.concat(response.data))
+}
   const handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:3001/add-discussion", formvalues).then(
-      (res) => {
-        console.log(res);
-        if (res.data.status === "Doubt Posted Successfully") {
-          alert("doubt added Successfully");
-          setformvalues(initialvalues);
-        } else {
-          alert("Unable to add");
-        }
-      }
-    );
+
+    addADiscuss({...formvalues}) 
+    setformvalues({ title: "",
+    body: "",
+    comments: [],
+    name: `${user.firstName} ${user.lastName}`})
+   
   };
+
+  const handleChange = (e)=>{
+    setformvalues({...formvalues,[e.target.name]:e.target.value})
+}
+useEffect(() => {
+  console.log(user)
+}, [handleSubmit])
+
   return (
     <div >
           <div className={style.box} style={{padding:"20px", margin: "10px", borderRadius:"15px",}}>
@@ -45,6 +60,7 @@ export default function Discussions({ credentials }) {
                   value={formvalues.title}
                   onChange={handleChange}
                   className={style.input1}
+                  required
                 />
               </div>
               <div>
@@ -55,6 +71,7 @@ export default function Discussions({ credentials }) {
                   value={formvalues.body}
                   onChange={handleChange}
                   className={style.input1}
+                  required
                 />
               </div>
               <div className={style.buttonbox}>
@@ -64,7 +81,7 @@ export default function Discussions({ credentials }) {
           </div>
         
       <div>
-        <DiscussionPost credentials={credentials} />
+        <DiscussionPost />
       </div>
   </div>
   );

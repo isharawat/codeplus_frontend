@@ -4,34 +4,40 @@ import Axios from "axios";
 import { setState, useState } from "react";
 import WomenPost from "./WomenPost";
 
-export default function WomenDes({ credentials }) {
+export default function WomenDes() {
+  
+  const user=JSON.parse(localStorage.getItem("User"));
   const initialvalues = {
     title: "",
     body: "",
     comments: [],
-    name: `${credentials.firstName} ${credentials.lastName}`,
+    name: `${user.firstName} ${user.lastName}`,
   };
   const [formvalues, setformvalues] = useState(initialvalues);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setformvalues({ ...formvalues, [name]: value });
-  };
-
+  const addDiscuss = async(values) =>{
+    console.log(values)
+    const request = {
+      ...values
+    }
+    console.log(request);
+    const  headers = {
+      'Content-Type': 'application/json',
+      'auth-token': localStorage.getItem("token")
+  }
+    const response = await Axios.post("http://localhost:3001/women-section/add-women-post",request,{headers})
+    setformvalues(formvalues.concat(response.data))
+}
   const handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:3001/add-women-post", formvalues).then(
-      (res) => {
-        console.log(res);
-        if (res.data.status === "Posted Successfully") {
-          alert("post Added Successfully");
-          setformvalues(initialvalues);
-        } else {
-          alert("Unable to add");
-        }
-      }
-    );
+
+    addDiscuss({...formvalues}) 
+    setformvalues(initialvalues)
+   
   };
+
+  const handleChange = (e)=>{
+    setformvalues({...formvalues,[e.target.name]:e.target.value})
+}
   return (
     <div>
       <div className={styles.description}>
@@ -70,7 +76,7 @@ export default function WomenDes({ credentials }) {
         </div>
       </div>
       <div>
-        <WomenPost credentials={credentials} />
+        <WomenPost user={user} />
       </div>
     </div>
   );

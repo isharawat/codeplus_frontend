@@ -4,41 +4,47 @@ import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
-export default function Comment({obj,credentials}) {
+import { useEffect } from "react";
+import Reply from "./Reply";
+export default function Comment({obj}) {
 
   const initialvalues={comment:' '}
-  
-
+  const user=JSON.parse(localStorage.getItem("User"));
   const [formvalues,setformvalues]= useState(initialvalues)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setformvalues({ ...formvalues, [name]: value });
   };
+ 
   const handleSubmit=(e)=>{
     e.preventDefault();
     
     const final =obj.comments;
-    final.push({comment:formvalues.comment,person:`${credentials.firstName} ${credentials.lastName}`})
+    final.push({comment:formvalues.comment,person:`${user.firstName} ${user.lastName}`})
     const values={title:obj.title,  body: obj.body, comments:final, name:obj.name }
-    
-   axios.patch(`http://localhost:3001/update-post/${obj._id}`,values )
+    const  headers = {
+      'Content-Type': 'application/json',
+      'auth-token': localStorage.getItem("token")
+  }
+   axios.patch(`http://localhost:3001/posts/update-post/${obj._id}`,values, {headers})
    .then(res=>{
        const msg=res.data.status
        console.log(msg)
        if(msg==="Post Updated Successfully"){
-          setformvalues(initialvalues)
-      
-
+          setformvalues(initialvalues)    
        }
-       alert(msg)
+   
    })
 
  }
 
-
   return (
     <div>
+        { obj.comments.map((obj,key)=>{
+           return <div key={key}><Reply obj={obj}/></div>          
+      })}
+      
       <form onSubmit={handleSubmit} action="#" method="post">
         <div className={styles.comment}>
           {" "}
