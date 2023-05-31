@@ -3,12 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import axios from "axios";
-
-export default function DiscussionComment({ obj, credentials }) {
+import Reply from "./Reply";
+export default function DiscussionComment({ obj }) {
   const initialvalues = { comment: " " };
   const [formvalues, setformvalues] = useState(initialvalues);
-
-  const handleChange = (e) => {
+  const user=JSON.parse(localStorage.getItem("User"));
+  const handleChange = (e) => { 
+    
     const { name, value } = e.target;
     setformvalues({ ...formvalues, [name]: value });
   };
@@ -18,7 +19,7 @@ export default function DiscussionComment({ obj, credentials }) {
     const final = obj.comments;
     final.push({
       comment: formvalues.comment,
-      person: `${credentials.firstName} ${credentials.lastName}`,
+      person: `${user.firstName} ${user.lastName}`,
     });
     const values = {
       title: obj.title,
@@ -26,19 +27,25 @@ export default function DiscussionComment({ obj, credentials }) {
       comments: final,
       name: obj.name,
     };
-
-    axios.patch(`http://localhost:3001/update-discussions/${obj._id}`, values).then((res) => {
+    const  headers = {
+      'Content-Type': 'application/json',
+      'auth-token': localStorage.getItem("token")
+    }
+    axios.patch(`http://localhost:3001/discussion/update-discussions/${obj._id}`, values, {headers}).then((res) => {
         const msg = res.data.status;
         console.log(msg);
         if (msg === "Post Updated Successfully") {
           setformvalues(initialvalues);
         }
-        alert(msg);
       });
   };
 
   return (
     <div>
+       { obj.comments.map((obj,key)=>{
+           return <div key={key}><Reply obj={obj}/></div>          
+      })}
+      
       <form onSubmit={handleSubmit} action="#" method="post">
         <div className={styles.comment}>
           {" "}

@@ -5,21 +5,29 @@ import styles from "../styles/announce.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faUser } from "@fortawesome/free-solid-svg-icons";
 import DiscussionComment from "./DiscussionComment";
-import Pastcomments from "./Pastcomments";
 
-
-export default function DiscussionPost({ credentials }) {
-
+import { useNavigate } from "react-router-dom";
+export default function DiscussionPost() {
   const [discussions, setDiscussions] = useState([]);
-  
+
+  const history=useNavigate();
   useEffect(() => {
-    Axios.get("http://localhost:3001/get-discussions").then((res) => {
-    
-      console.log(res.data);
-      setDiscussions(res.data.data.discussions);
-      console.log(discussions);
-    });
-  }, []);
+    if (localStorage.getItem("token")) {
+      const headers= {
+        'Content-Type': 'application/json',
+        'auth-token': localStorage.getItem("token")
+    }
+    Axios.get("http://localhost:3001/discussion/get-discussions",{headers}).then((res) => {     
+     console.log(res.data);
+     setDiscussions(res.data.data.discussions);
+     console.log(discussions);
+   });
+    }
+    else {
+        history("/login")
+    }
+    // eslint-disable-next-line
+  }, [])
 
   return (
     <>
@@ -57,8 +65,8 @@ export default function DiscussionPost({ credentials }) {
           
                     />
                   </div>
-                 <div><Pastcomments comments={obj.comments}/>
-                  <DiscussionComment obj={obj} credentials={credentials}/></div>
+                 <div>
+                  <DiscussionComment obj={obj} /></div>
                     
                  
                 </div>

@@ -19,8 +19,7 @@ export default function Question() {
      Axios.delete(`http://localhost:3001/delete-question/${id}`).then(res => {
       setQuestions(res.data.data.questions)
       console.log(res.data);
-    })
-     
+    })    
   }
 
   return (

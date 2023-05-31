@@ -1,6 +1,7 @@
 import './App.css';
 import Announce from './components/announce';
 import Question from './components/Questions';
+import Axios from "axios";
 import Discussions from './components/Discussions';
 import Menubar from "./components/menu";
 import ManageQuestions from "./components/ManageQuestions";
@@ -18,15 +19,8 @@ import { BrowserRouter, Route, Routes, NavLink, Navigate } from "react-router-do
 import React from 'react';
 import { useState,useEffect} from 'react';
 function App() {
-  const initialValue ={isLoggedin :false, isAdmin :false,firstName :'', codechef: '',
-   lastName :'', codeForces :'', atCoder :'', hackerEarth :'', leetcode :'', id: '',
-   emailId :'', password : ''
-  };
-  let order=0
-  const LOCAL_STORAGE_KEY = "CREDENTIALS";
-  const [credentials,setCredentials] = useState(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))||initialValue);
   
-  const data= { obj1 : credentials };
+  const [credentials, setCredentials] = useState([]);
 
   
 
@@ -43,14 +37,12 @@ function App() {
 
   // console.log(credentials,'.............................gg',order++)
 
-  const fnitialValue ={isLoggedin :true, isAdmin :false,firstName :'', codechef: '',
-   lastName :'', codeForces :'', atCoder :'', hackerEarth :'', leetcode :'', id: '',
-   emailId :'', password : ''
-  };
-  useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(credentials));
-    // console.log(credentials,'.............................hh',order++)
-  },[credentials]);
+  // const fnitialValue ={isLoggedin :true, isAdmin :false,firstName :'', codechef: '',
+  //  lastName :'', codeForces :'', atCoder :'', hackerEarth :'', leetcode :'', id: '',
+  //  emailId :'', password : ''
+  // };
+
+
   
   return (
     <BrowserRouter  >

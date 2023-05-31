@@ -4,39 +4,84 @@ import style from "./Account.module.css";
 import axios from "axios";
 
 const Signup = () => {
-
-  const initialvalues ={isLoggedin :false, isAdmin :false, firstName :'', codechef: '',
+  //new changes
+  const history = useNavigate();
+  const [credentials, setCredentials] = useState({ isLoggedin :false, isAdmin :false, firstName :'', codechef: '',
    lastName :'', codeForces :'', atCoder :'', hackerEarth :'', leetcode :'',
-   emailId :'', password : '' 
-  };
-
-  const [formvalues, setformvalues] = useState(initialvalues);
-  const navigate=useNavigate();
-  
+   emailId :'', password : ''  })
+  const handleSubmit = async (e) => {
+      e.preventDefault()
+      const response = await fetch("http://localhost:3001/auth/register", {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            firstName: credentials.firstName, 
+            lastName: credentials.lastName,
+            codeForces: credentials.codeForces,
+            codechef: credentials.codechef,
+            leetcode: credentials.leetcode,
+            atCoder: credentials.atCoder,
+            hackerEarth: credentials.hackerEarth,
+            isLoggedin:false,
+            isAdmin:false,
+            emailId: credentials.emailId, 
+            password: credentials.password 
+          })
+      });
+      const json = await response.json()
+      console.log(json)
+      if (json.success === true) {
+          //Redirect
+          localStorage.setItem("token", json.authToken)
+          history("/")
+      }
+     
+  }
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setformvalues({ ...formvalues, [name]: value });
-  };
+      setCredentials({ ...credentials, [e.target.name]: e.target.value })
+  }
+
+
+
+
+
+
+
+
+  // const initialvalues ={isLoggedin :false, isAdmin :false, firstName :'', codechef: '',
+  //  lastName :'', codeForces :'', atCoder :'', hackerEarth :'', leetcode :'',
+  //  emailId :'', password : '' 
+  // };
+
+  // const [credentials, setcredentials] = useState(initialvalues);
+  // const navigate=useNavigate();
   
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formvalues.emailId)
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setcredentials({ ...credentials, [name]: value });
+  // };
+  
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(credentials.emailId)
 
-    if(formvalues.emailId&&formvalues.password){
-      axios.post("http://localhost:3001/register",formvalues )
-      .then(res=>console.log(res))
-   }
-        //Axios request
-       // if success
-         navigate("/Login");
-        // setCredentials(initialvalues)
+  //   if(credentials.emailId&&credentials.password){
+  //     axios.post("http://localhost:3001/register",credentials )
+  //     .then(res=>console.log(res))
+  //  }
+  //       //Axios request
+  //      // if success
+  //        navigate("/Login");
+  //       // setCredentials(initialvalues)
 
-    // 
-    // else message signup again 
-    // setformvalues(initialvalues);
+  //   // 
+  //   // else message signup again 
+  //   // setcredentials(initialvalues);
     
 
-  };
+  // };
 
   return (
     <div className={style.outer}>
@@ -63,7 +108,7 @@ const Signup = () => {
                   <input
                     type="text"
                     name="firstName"
-                    value={formvalues.firstName}
+                    value={credentials.firstName}
                     onChange={handleChange}
                     className={style.input}
                   />
@@ -75,7 +120,7 @@ const Signup = () => {
                   <input
                     type="text"
                     name="lastName"
-                    value={formvalues.lastName}
+                    value={credentials.lastName}
                     onChange={handleChange}
                     className={style.input}
                   />
@@ -87,7 +132,7 @@ const Signup = () => {
                   <input
                     type="text"
                     name="emailId"
-                    value={formvalues.emailId}
+                    value={credentials.emailId}
                     onChange={handleChange}
                     className={style.input}
                   />
@@ -99,7 +144,7 @@ const Signup = () => {
                   <input
                     type="text"
                     name="password"
-                    value={formvalues.password}
+                    value={credentials.password}
                     onChange={handleChange}
                     className={style.input}
                   />
@@ -116,7 +161,7 @@ const Signup = () => {
                   <input
                     type="text"
                     name="codeForces"
-                    value={formvalues.codeForces}
+                    value={credentials.codeForces}
                     onChange={handleChange}
                     className={style.input}
                   />
@@ -128,7 +173,7 @@ const Signup = () => {
                   <input
                     type="text"
                     name="atCoder"
-                    value={formvalues.atCoder}
+                    value={credentials.atCoder}
                     onChange={handleChange}
                     className={style.input}
                   />
@@ -140,7 +185,7 @@ const Signup = () => {
                   <input
                     type="text"
                     name="codechef"
-                    value={formvalues.codechef}
+                    value={credentials.codechef}
                     onChange={handleChange}
                     className={style.input}
                   />
@@ -152,7 +197,7 @@ const Signup = () => {
                   <input
                     type="text"
                     name="leetcode"
-                    value={formvalues.leetcode}
+                    value={credentials.leetcode}
                     onChange={handleChange}
                     className={style.input}
                   />
@@ -164,7 +209,7 @@ const Signup = () => {
                   <input
                     type="text"
                     name="hackerEarth"
-                    value={formvalues.hackerEarth}
+                    value={credentials.hackerEarth}
                     onChange={handleChange}
                     className={style.input}
                   />
