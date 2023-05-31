@@ -43,68 +43,29 @@ const Signup = () => {
       setCredentials({ ...credentials, [e.target.name]: e.target.value })
   }
 
-
-
-
-
-
-
-
-  // const initialvalues ={isLoggedin :false, isAdmin :false, firstName :'', codechef: '',
-  //  lastName :'', codeForces :'', atCoder :'', hackerEarth :'', leetcode :'',
-  //  emailId :'', password : '' 
-  // };
-
-  // const [credentials, setcredentials] = useState(initialvalues);
-  // const navigate=useNavigate();
-  
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setcredentials({ ...credentials, [name]: value });
-  // };
-  
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(credentials.emailId)
-
-  //   if(credentials.emailId&&credentials.password){
-  //     axios.post("http://localhost:3001/register",credentials )
-  //     .then(res=>console.log(res))
-  //  }
-  //       //Axios request
-  //      // if success
-  //        navigate("/Login");
-  //       // setCredentials(initialvalues)
-
-  //   // 
-  //   // else message signup again 
-  //   // setcredentials(initialvalues);
-    
-
-  // };
-
   return (
     <div className={style.outer}>
       
       <div className={style.account}>
         <div className={style.btn}>
           <div></div>
-          <button className={style.Signup} >
+          <button className={style.Signup2} >
             Sign Up
           </button>
           <NavLink to="/login">
-            <button className={style.Login} >Log In</button>
+            <button className={style.Login2} >Log In</button>
           </NavLink>
         </div>
         <div>
           <form onSubmit={handleSubmit}>
-            <div>
+            <div style={{marginLeft:"20px"}}>
               <h3>Personal Details</h3>
             </div>
             <div className={style.form}>
               <div className={style.label}>
-                <label>
-                  First Name
+                <label style={{marginRight:"6px"}}>
+                  First Name:
+                  </label>
                   <input
                     type="text"
                     name="firstName"
@@ -112,11 +73,12 @@ const Signup = () => {
                     onChange={handleChange}
                     className={style.input}
                   />
-                </label>
+                
               </div>
               <div className={style.label}>
-                <label>
-                  Last Name
+                <label style={{marginRight:"6px"}}>
+                  Last Name:
+                </label>
                   <input
                     type="text"
                     name="lastName"
@@ -124,11 +86,12 @@ const Signup = () => {
                     onChange={handleChange}
                     className={style.input}
                   />
-                </label>
+                
               </div>
               <div className={style.label}>
-                <label>
-                  College Email Id
+                <label style={{marginRight:"6px"}}>
+                  College Email Id:
+                  </label>
                   <input
                     type="text"
                     name="emailId"
@@ -136,11 +99,12 @@ const Signup = () => {
                     onChange={handleChange}
                     className={style.input}
                   />
-                </label>
+                
               </div>
               <div className={style.label}>
-                <label>
-                  Password
+                <label style={{marginRight:"6px"}}>
+                  Password:
+                  </label>
                   <input
                     type="text"
                     name="password"
@@ -148,16 +112,17 @@ const Signup = () => {
                     onChange={handleChange}
                     className={style.input}
                   />
-                </label>
+                
               </div>
             </div>
-            <div>
+            <div style={{marginLeft:"20px"}}>
               <h3>Please provide handle name of the following:</h3>
             </div>
             <div className={style.form}>
               <div className={style.label}>
-                <label>
-                  Codeforces
+                <label style={{marginRight:"6px"}}>
+                  Codeforces:
+                  </label>
                   <input
                     type="text"
                     name="codeForces"
@@ -165,11 +130,12 @@ const Signup = () => {
                     onChange={handleChange}
                     className={style.input}
                   />
-                </label>
+                
               </div>
               <div className={style.label}>
-                <label>
-                  Atcoder
+                <label style={{marginRight:"6px"}}>
+                  Atcoder:  
+                  </label>
                   <input
                     type="text"
                     name="atCoder"
@@ -177,11 +143,12 @@ const Signup = () => {
                     onChange={handleChange}
                     className={style.input}
                   />
-                </label>
+                
               </div>
               <div className={style.label}>
-                <label>
-                  Codechef
+                <label style={{marginRight:"6px"}}>
+                  Codechef:
+                  </label>
                   <input
                     type="text"
                     name="codechef"
@@ -189,11 +156,12 @@ const Signup = () => {
                     onChange={handleChange}
                     className={style.input}
                   />
-                </label>
+                
               </div>
               <div className={style.label}>
-                <label>
-                  Leetcode
+                <label style={{marginRight:"6px"}}>
+                  Leetcode:
+                  </label>
                   <input
                     type="text"
                     name="leetcode"
@@ -201,19 +169,19 @@ const Signup = () => {
                     onChange={handleChange}
                     className={style.input}
                   />
-                </label>
+                
               </div>
               <div className={style.label}>
-                <label>
-                  Hackerearth
+                <label style={{marginRight:"6px"}}>
+                  Hackerearth:
+                  </label>
                   <input
                     type="text"
                     name="hackerEarth"
                     value={credentials.hackerEarth}
                     onChange={handleChange}
                     className={style.input}
-                  />
-                </label>
+                  />     
               </div>
             </div>
             <div className={style.buttonbox}>

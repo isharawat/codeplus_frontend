@@ -3,11 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faUser, faRightFromBracket, faSignIn, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-export default function Topbar({ credentials ,setCredentials}) {
-  const initialValue ={isLoggedin :false, isAdmin :false,firstName :'', codechef: '',
-  lastName :'', codeForces :'', atCoder :'', hackerEarth :'', leetcode :'', id: '',
-  emailId :'', password : ''
- };
+export default function Topbar() {
+  
  const history = useNavigate();
  const handleLogout = ()=>{
   localStorage.removeItem("token")

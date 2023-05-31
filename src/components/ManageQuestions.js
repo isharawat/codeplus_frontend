@@ -3,13 +3,13 @@ import { setState, useState } from "react";
 import styles from "../styles/Post.module.css";
 import Axios from "axios";
 import style from "../Account/Account.module.css";
+
 export default function ManageQuestions() {
   const [question, setName] = useState("");
   const [url, setUrl] = useState("");
   const [points, setPoints] = useState(0);
   const [msg, setMsg] = useState("Please add a new question.");
-  //adding question
-
+  
   const addNewQuestion = () => {
     Axios.post("http://localhost:3001/add-question", {
       question,

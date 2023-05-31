@@ -1,14 +1,12 @@
 import stylep from "../styles/Home.module.css";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import style from "../Account/Account.module.css";
 import Axios from "axios";
 import { setState, useState } from "react";
 import DiscussionPost from "./DiscussionPost";
 
 export default function Discussions() {
-    
-  
+ 
   const user=JSON.parse(localStorage.getItem("User"));
   const initialvalues = {
     title: "",
@@ -78,8 +76,7 @@ useEffect(() => {
                 <button className={style.button}>Sumbit</button>
               </div>
             </form>
-          </div>
-        
+          </div>     
       <div>
         <DiscussionPost />
       </div>

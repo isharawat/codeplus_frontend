@@ -4,12 +4,12 @@ import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import axios from "axios";
 import Reply from "./Reply";
+
 export default function DiscussionComment({ obj }) {
   const initialvalues = { comment: " " };
   const [formvalues, setformvalues] = useState(initialvalues);
   const user=JSON.parse(localStorage.getItem("User"));
-  const handleChange = (e) => { 
-    
+  const handleChange = (e) => {  
     const { name, value } = e.target;
     setformvalues({ ...formvalues, [name]: value });
   };

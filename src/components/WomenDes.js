@@ -3,10 +3,12 @@ import style from "../Account/Account.module.css";
 import Axios from "axios";
 import { setState, useState } from "react";
 import WomenPost from "./WomenPost";
+import { useNavigate } from "react-router";
 
 export default function WomenDes() {
-  
-  const user=JSON.parse(localStorage.getItem("User"));
+  const history = useNavigate();
+  const user = JSON.parse(localStorage.getItem("User"));
+  console.log(user);
   const initialvalues = {
     title: "",
     body: "",
@@ -29,7 +31,6 @@ export default function WomenDes() {
 }
   const handleSubmit = (e) => {
     e.preventDefault();
-
     addDiscuss({...formvalues}) 
     setformvalues(initialvalues)
    
