@@ -14,9 +14,9 @@
 .box{
     background-color: #D8E4E8;
     padding: 20px;
-    
 }
 .codeplus{
+    padding: 20px;
     background-color: #D8E4E8;
     border-radius: 20px;   
     color: #052E3B;
@@ -73,22 +73,15 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-.input{
-    background-color: #06576C;
-    outline: none;
-    border: none;
-    color: #D8E4E8;
-    margin-bottom: 20px;
-    margin-right: 10px;
-    border-bottom: 1px solid #D8E4E8;
-}
+
 .input1{
+    margin-left: 10px;
     background-color: #D8E4E8;;
     border: none;
     outline: none;
     color: #06576C;
     margin-bottom: 20px;
-    margin-right: 20px;
+ 
     border-bottom: 1px solid #06576C;
 }
 .label{

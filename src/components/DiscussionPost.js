@@ -18,9 +18,7 @@ export default function DiscussionPost() {
         'auth-token': localStorage.getItem("token")
     }
     Axios.get("http://localhost:3001/discussion/get-discussions",{headers}).then((res) => {     
-     console.log(res.data);
      setDiscussions(res.data.data.discussions);
-     console.log(discussions);
    });
     }
     else {

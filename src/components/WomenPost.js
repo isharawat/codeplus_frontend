@@ -15,12 +15,13 @@ export default function WomenPost({}) {
       const headers= {
         'Content-Type': 'application/json',
         'auth-token': localStorage.getItem("token")
-     }
+      }
       Axios.get("http://localhost:3001/women-section/get-women-posts", {headers}).then((res) => {
-      
-        console.log(res.data);
-        setWomenPost(res.data.data.womenposts);
-        console.log(womenpost);
+        console.log(res);
+        if(res.data.status != 'Failed') {
+          console.log(res.data);
+          setWomenPost(res.data.data.womenposts);
+        }
       });
     }
     else {

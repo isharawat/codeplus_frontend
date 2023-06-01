@@ -30,108 +30,116 @@ const EditDetails = ({credentials,setCredentials}) => {
     }
 
     return ( 
-        
-            <div className={style.EditDetails}>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <h3>Personal Details</h3>
-                </div>
-        
-                <div className={style.label}>
-                    <label>
-                        First Name:  
-                    <input 
-                        type="text" 
-                        name="firstName"
-                        value={formvalues.firstName}
-                        onChange={handleChange}
-                        className={style.input}
-                    />
-                    </label>
-                </div>
-                <div className={style.label}>
-                    <label >
-                        Last Name: 
-                    <input 
-                        type="text" 
-                        name="lastName"
-                        value={formvalues.lastName}
-                        onChange={handleChange}
-                        className={style.input}
-                    />
-                    </label>
-                </div>
-                
-                <div>
-                    <h3>Please provide handle name of the following:</h3>
-                </div>
-                <div className={style.label}>
-                    <label>
-                        Codeforces: 
-                    <input 
-                        type="text" 
-                        name="codeForces"
-                        value={formvalues.codeForces}
-                        onChange={handleChange}
-                        className={style.input}
-                    />
-                    </label>
-                </div>
-                <div className={style.label}>
-                    <label >
-                        Atcoder: 
-                    <input 
-                        type="text" 
-                        name="atCoder"
-                        value={formvalues.atCoder}
-                        onChange={handleChange}
-                        className={style.input}
-                    />
-                    </label>
-                </div>
-                <div className={style.label}>
-                    <label >
-                        Codechef: 
-                    <input 
-                        type="text" 
-                        name="codechef"
-                        value={formvalues.codechef}
-                        onChange={handleChange}
-                        className={style.input}
-                    />
-                    </label>
-                </div>
-                <div className={style.label}>
-                    <label >
-                        Leetcode: 
-                    <input
-                        type="text" 
-                        name="leetcode"
-                        value={formvalues.leetcode}
-                        onChange={handleChange}
-                        className={style.input}
-                    />
-                    </label>
-                </div>
-                <div className={style.label}>
-                    <label >
-                        Hackerearth: 
-                    <input
-                        type="text" 
-                        name="hackerEarth"
-                        value={formvalues.hackerEarth}
-                        onChange={handleChange}
-                        className={style.input}
-                    />
-                    </label>
-                </div>
-                <div className={style.buttonbox}>
-                  <button className={style.button} >Save Changes</button>
-                </div>
-                <div className={style.buttonbox}>
-                <button className={style.button}  >Back to Home</button>
+        <div className={style.outer}>
+            <div className={style.codeplus}>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <h3>Personal Details</h3>
+                    </div>
+                    <div className={style.form}>
+                        <div className={style.label}>
+                            <label>
+                                First Name:  
+                            </label>
+                            <input 
+                                type="text" 
+                                name="firstName"
+                                value={formvalues.firstName}
+                                onChange={handleChange}
+                                className={style.input1}
+                            />
+                            
+                        </div>
+                        <div className={style.label}>
+                            <label >
+                                Last Name: 
+                            </label>
+                            <input 
+                                type="text" 
+                                name="lastName"
+                                value={formvalues.lastName}
+                                onChange={handleChange}
+                                className={style.input1}
+                            />
+                            
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Please provide handle name of the following:</h3>
+                    </div>
+                    <div className={style.form}>
+                        <div className={style.label}>
+                            <label>
+                                Codeforces: 
+                            </label>
+                            <input 
+                                type="text" 
+                                name="codeForces"
+                                value={formvalues.codeForces}
+                                onChange={handleChange}
+                                className={style.input1}
+                            />    
+                        </div>
+                        <div className={style.label}>
+                            <label >
+                                Atcoder: 
+                            </label>
+                            <input 
+                                type="text" 
+                                name="atCoder"
+                                value={formvalues.atCoder}
+                                onChange={handleChange}
+                                className={style.input1}
+                            />   
+                        </div>
+                        <div className={style.label}>
+                            <label >
+                                Codechef: 
+                            </label>
+                            <input 
+                                type="text" 
+                                name="codechef"
+                                value={formvalues.codechef}
+                                onChange={handleChange}
+                                className={style.input1}
+                            />
+                            
+                        </div>
+                        <div className={style.label}>
+                            <label >
+                                Leetcode: 
+                            </label>
+                            <input
+                                type="text" 
+                                name="leetcode"
+                                value={formvalues.leetcode}
+                                onChange={handleChange}
+                                className={style.input1}
+                            />
+                            
+                        </div>
+                        <div className={style.label}>
+                            <label >
+                                Hackerearth:
+                            </label> 
+                            <input
+                                type="text" 
+                                name="hackerEarth"
+                                value={formvalues.hackerEarth}
+                                onChange={handleChange}
+                                className={style.input1}
+                            />
+                            
+                        </div>
+                    </div>
+                    <div className={style.buttonbox}>
+                    <button className={style.button} >Save Changes</button>
+                    </div>
+                    <div className={style.buttonbox}>
+                        <button className={style.button}  >Back to Home</button>
+                    </div> 
+                </form>
             </div>
-            </form>
         </div>
      );
 }

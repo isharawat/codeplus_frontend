@@ -8,7 +8,7 @@ import { useNavigate } from "react-router";
 export default function WomenDes() {
   const history = useNavigate();
   const user = JSON.parse(localStorage.getItem("User"));
-  console.log(user);
+
   const initialvalues = {
     title: "",
     body: "",
@@ -17,23 +17,21 @@ export default function WomenDes() {
   };
   const [formvalues, setformvalues] = useState(initialvalues);
   const addDiscuss = async(values) =>{
-    console.log(values)
     const request = {
       ...values
     }
-    console.log(request);
-    const  headers = {
+    const headers = {
       'Content-Type': 'application/json',
       'auth-token': localStorage.getItem("token")
-  }
-    const response = await Axios.post("http://localhost:3001/women-section/add-women-post",request,{headers})
-    setformvalues(formvalues.concat(response.data))
+    }
+    const response = await Axios.post("http://localhost:3001/women-section/add-women-post",request,{headers});
+    console.log(response);
+    
 }
   const handleSubmit = (e) => {
     e.preventDefault();
     addDiscuss({...formvalues}) 
     setformvalues(initialvalues)
-   
   };
 
   const handleChange = (e)=>{
