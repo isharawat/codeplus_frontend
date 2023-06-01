@@ -27,7 +27,7 @@ export default function Question() {
       history("/login");
     }
   },[])
-
+  
   const deleteQuestion = (id) => {
     if(headers) {
       Axios.delete(`http://localhost:3001/questions/delete-question/${id}`, {headers}).then(res => {
@@ -36,14 +36,15 @@ export default function Question() {
       })  
     }
     else {
-      history(".login");
-    }  
+      history("/login");
+    } 
   }
 
   return (
     <div>
       <ul>{
         question.map((val,key) => {
+          
           console.log(val);
           return <li key={key} className={styles.li} >
             <span><a href={val.url}>{val.question}</a></span>

@@ -29,27 +29,33 @@ function App() {
           <Menubar />
         </div>
         <div >
-          <div style={{position: "-webkit-sticky", position: "sticky" ,top: "0"}}> <Topbar setCredentials = {setCredentials}/></div>
+          <div style={{position: "-webkit-sticky", position: "sticky" ,top: "0"}}> 
+            <Topbar setCredentials = {setCredentials}/>
+          </div>
          
           <div className={style.part2}>
-            <Routes>
-          
-              <Route path="/" element={localStorage.getItem("token")?<Announce />:<Login/>}/>
-              <Route path="/Discussions" element={<Discussions/>} /> 
-              <Route path="/Leaderboard" element={<MainLeaderboard/>} /> 
-              <Route path="/Questions" element={<Question/>}/> 
-              <Route path="/signup" element={<Signup />} /> 
-              <Route path="/Login" element={<Login/>} /> 
-              <Route path="/Editdetails" element={<EditDetails/>} /> 
-              <Route path="/WomenDes" element={<Womendes/>} />
-              <Route path="/ManageQuestions" element={<ManageQuestions/>} /> 
-              <Route path="/ManagePosts" element={<ManagePosts/>} /> 
+            <div>
+              <Routes>
+            
+                <Route path="/" element={localStorage.getItem("token")?<Announce />:<Login/>}/>
+                <Route path="/Discussions" element={<Discussions/>} /> 
+                <Route path="/Leaderboard" element={<MainLeaderboard/>} /> 
+                <Route path="/Questions" element={<Question/>}/> 
+                <Route path="/signup" element={<Signup />} /> 
+                <Route path="/Login" element={<Login/>} /> 
+                <Route path="/Editdetails" element={<EditDetails/>} /> 
+                <Route path="/WomenDes" element={<Womendes/>} />
+                <Route path="/ManageQuestions" element={<ManageQuestions/>} /> 
+                <Route path="/ManagePosts" element={<ManagePosts/>} /> 
 
-              <Route path="*" element={<h1>Error 404 page not found</h1>} /> 
-            </Routes>
-            <div className={style.part3}>
-              <ContestReminder />
-              <Leaderboard />
+                <Route path="*" element={<h1>Error 404 page not found</h1>} /> 
+              </Routes>
+            </div>
+            <div style={{position: "sticky", top: "80px", alignSelf: "start"}}>
+              <div className={style.part3}>
+                <ContestReminder />
+                <Leaderboard />
+              </div>
             </div>
           </div>
         </div>
