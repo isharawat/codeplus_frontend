@@ -1,14 +1,13 @@
 import styles from "../styles/womenDes.module.css";
 import style from "../Account/Account.module.css";
 import Axios from "axios";
-import { setState, useState } from "react";
+import { setState, useState,useEffect } from "react";
 import WomenPost from "./WomenPost";
-import { useNavigate } from "react-router";
-
+import { useNavigate } from "react-router-dom";
 export default function WomenDes() {
-  const history = useNavigate();
   const user = JSON.parse(localStorage.getItem("User"));
-  console.log(user);
+  const history = useNavigate();
+  const [womenpost, setWomenPost] = useState([]);
   const initialvalues = {
     title: "",
     body: "",
@@ -21,24 +20,61 @@ export default function WomenDes() {
     const request = {
       ...values
     }
-    console.log(request);
     const  headers = {
       'Content-Type': 'application/json',
       'auth-token': localStorage.getItem("token")
   }
-    const response = await Axios.post("http://localhost:3001/women-section/add-women-post",request,{headers})
-    setformvalues(formvalues.concat(response.data))
+    try{
+      const response = await Axios.post("http://localhost:3001/women-section/add-women-post",request,{headers})
+    }
+    catch(err){
+      console.log("error h bhai",err);
+    }
+    if (localStorage.getItem("token")) {
+      const headers= {
+        'Content-Type': 'application/json',
+        'auth-token': localStorage.getItem("token")
+     }
+      Axios.get("http://localhost:3001/women-section/get-women-posts", {headers}).then((res) => {
+      
+
+        setWomenPost(res.data.data.womenposts);
+
+      });
+    }
+    else {
+        history("/login")
+    }
 }
   const handleSubmit = (e) => {
     e.preventDefault();
     addDiscuss({...formvalues}) 
-    setformvalues(initialvalues)
+    setformvalues({title: "",
+    body: "",
+    comments: [],
+    name: `${user.firstName} ${user.lastName}`})
    
   };
 
   const handleChange = (e)=>{
     setformvalues({...formvalues,[e.target.name]:e.target.value})
 }
+
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      const headers= {
+        'Content-Type': 'application/json',
+        'auth-token': localStorage.getItem("token")
+     }
+      Axios.get("http://localhost:3001/women-section/get-women-posts", {headers}).then((res) => {
+        setWomenPost(res.data.data.womenposts);
+      });
+    }
+    else {
+        history("/login")
+    }
+  }, []);
   return (
     <div>
       <div className={styles.description}>
@@ -77,7 +113,7 @@ export default function WomenDes() {
         </div>
       </div>
       <div>
-        <WomenPost user={user} />
+        <WomenPost  womenpost={womenpost}/>
       </div>
     </div>
   );

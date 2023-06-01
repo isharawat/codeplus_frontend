@@ -6,34 +6,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faUser } from "@fortawesome/free-solid-svg-icons";
 import WomenComment from "./WomenComment";
 import { useNavigate } from "react-router-dom";
-export default function WomenPost({}) {
-  const history = useNavigate();
-  const [womenpost, setWomenPost] = useState([]);
-
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      const headers= {
-        'Content-Type': 'application/json',
-        'auth-token': localStorage.getItem("token")
-     }
-      Axios.get("http://localhost:3001/women-section/get-women-posts", {headers}).then((res) => {
-      
-        console.log(res.data);
-        setWomenPost(res.data.data.womenposts);
-        console.log(womenpost);
-      });
-    }
-    else {
-        history("/login")
-    }
-  }, []);
+export default function WomenPost({womenpost}) {
+  
 
   return (
     <>
       <div>
         <ul>
           {womenpost.map((obj, key) => {
-            console.log(obj);
             return (
               <div key={key}>
                 <div className={styles.container}>

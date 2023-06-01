@@ -7,34 +7,15 @@ import { faComment, faUser } from "@fortawesome/free-solid-svg-icons";
 import DiscussionComment from "./DiscussionComment";
 
 import { useNavigate } from "react-router-dom";
-export default function DiscussionPost() {
-  const [discussions, setDiscussions] = useState([]);
+export default function DiscussionPost({discussions}) {
 
-  const history=useNavigate();
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      const headers= {
-        'Content-Type': 'application/json',
-        'auth-token': localStorage.getItem("token")
-    }
-    Axios.get("http://localhost:3001/discussion/get-discussions",{headers}).then((res) => {     
-     console.log(res.data);
-     setDiscussions(res.data.data.discussions);
-     console.log(discussions);
-   });
-    }
-    else {
-        history("/login")
-    }
-    // eslint-disable-next-line
-  }, [])
-
+ 
   return (
     <>
       <div>
         <ul>
           {discussions.map((obj, key) => {
-            console.log(obj);
+        
             return (
               <div key={key}>
                 <div className={styles.container}>
