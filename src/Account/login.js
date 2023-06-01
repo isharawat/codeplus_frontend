@@ -62,7 +62,7 @@ const Login = () => {
                   name="emailId"
                   value={credentials.emailId}
                   onChange={handleChange}
-                  className={style.input}
+                  className={style.input1}
                 />
               </div>
               <div>
@@ -72,7 +72,7 @@ const Login = () => {
                   name="password"
                   value={credentials.password}
                   onChange={handleChange}
-                  className={style.input}
+                  className={style.input1}
                 />
               </div>
             </div>

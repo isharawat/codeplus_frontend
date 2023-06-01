@@ -4,22 +4,40 @@ import {faEdit, faTrash} from "@fortawesome/free-solid-svg-icons"
 import {useState, useEffect, setState} from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 export default function Question() {
   const [question, setQuestions] = useState([])
-
+  const history = useNavigate();
+  let headers;
+  if (localStorage.getItem("token")) {
+     headers= {
+      'Content-Type': 'application/json',
+      'auth-token': localStorage.getItem("token")
+    }
+  }
   useEffect(() => {
-    Axios.get('http://localhost:3001/get-questions').then(res => {
-      setQuestions(res.data.data.questions)
-      console.log(res.data);
-    })
+    if(headers) {
+      Axios.get('http://localhost:3001/questions/get-questions', {headers}).then(res => {
+        setQuestions(res.data.data.questions)
+        console.log(res.data);
+      })
+    }
+    else {
+      history("/login");
+    }
   },[])
 
   const deleteQuestion = (id) => {
-     Axios.delete(`http://localhost:3001/delete-question/${id}`).then(res => {
-      setQuestions(res.data.data.questions)
-      console.log(res.data);
-    })    
+    if(headers) {
+      Axios.delete(`http://localhost:3001/questions/delete-question/${id}`, {headers}).then(res => {
+        setQuestions(res.data.data.questions)
+        console.log(res.data);
+      })  
+    }
+    else {
+      history(".login");
+    }  
   }
 
   return (

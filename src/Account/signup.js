@@ -71,7 +71,7 @@ const Signup = () => {
                     name="firstName"
                     value={credentials.firstName}
                     onChange={handleChange}
-                    className={style.input}
+                    className={style.input1}
                   />
                 
               </div>
@@ -84,7 +84,7 @@ const Signup = () => {
                     name="lastName"
                     value={credentials.lastName}
                     onChange={handleChange}
-                    className={style.input}
+                    className={style.input1}
                   />
                 
               </div>
@@ -97,7 +97,7 @@ const Signup = () => {
                     name="emailId"
                     value={credentials.emailId}
                     onChange={handleChange}
-                    className={style.input}
+                    className={style.input1}
                   />
                 
               </div>
@@ -110,7 +110,7 @@ const Signup = () => {
                     name="password"
                     value={credentials.password}
                     onChange={handleChange}
-                    className={style.input}
+                    className={style.input1}
                   />
                 
               </div>
@@ -128,7 +128,7 @@ const Signup = () => {
                     name="codeForces"
                     value={credentials.codeForces}
                     onChange={handleChange}
-                    className={style.input}
+                    className={style.input1}
                   />
                 
               </div>
@@ -141,7 +141,7 @@ const Signup = () => {
                     name="atCoder"
                     value={credentials.atCoder}
                     onChange={handleChange}
-                    className={style.input}
+                    className={style.input1}
                   />
                 
               </div>
@@ -154,7 +154,7 @@ const Signup = () => {
                     name="codechef"
                     value={credentials.codechef}
                     onChange={handleChange}
-                    className={style.input}
+                    className={style.input1}
                   />
                 
               </div>
@@ -167,7 +167,7 @@ const Signup = () => {
                     name="leetcode"
                     value={credentials.leetcode}
                     onChange={handleChange}
-                    className={style.input}
+                    className={style.input1}
                   />
                 
               </div>
@@ -180,7 +180,7 @@ const Signup = () => {
                     name="hackerEarth"
                     value={credentials.hackerEarth}
                     onChange={handleChange}
-                    className={style.input}
+                    className={style.input1}
                   />     
               </div>
             </div>

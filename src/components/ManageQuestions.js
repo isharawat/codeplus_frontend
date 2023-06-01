@@ -5,71 +5,82 @@ import Axios from "axios";
 import style from "../Account/Account.module.css";
 
 export default function ManageQuestions() {
-  const [question, setName] = useState("");
-  const [url, setUrl] = useState("");
-  const [points, setPoints] = useState(0);
-  const [msg, setMsg] = useState("Please add a new question.");
-  
-  const addNewQuestion = () => {
-    Axios.post("http://localhost:3001/add-question", {
-      question,
-      url,
-      points,
-    }).then((res) => {
-      if (res.data.status == "Success") {
-        setMsg("Question Added Successfully");
-        setName("");
-        setUrl("");
-        setPoints(0);
-      } else {
-        setMsg("Unable to add the question");
+
+  const initialvalues={question:"", url: "",points: "", msg:"Please add a new question." }
+    const [formvalues,setformvalues]=useState(initialvalues)
+    const addADiscuss = async(values) =>{
+      console.log(values)
+      const request = {
+        ...values
       }
-    });
-  };
+      console.log(request);
+      const  headers = {
+        'Content-Type': 'application/json',
+        'auth-token': localStorage.getItem("token")
+    }
+      const response = await Axios.post("http://localhost:3001/questions/add-question",request,{headers});
+      setformvalues(initialvalues);
+      if(response.data) {  
+        setformvalues({...initialvalues, msg: "Question Added Successfully"})
+      }
+      else {
+        setformvalues({...initialvalues, msg: "Unable to add the question"})
+      }
+      
+  }
+    const handleChange =(e)=>{
+        const {name,value}=e.target
+        setformvalues({ ...formvalues,[name]:value})
+    }
+    
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+
+        addADiscuss({...formvalues}) 
+        setformvalues(initialvalues)   
+    }
+  
 
   return (
     <div className={style.outer1}>
         <div className={style.box}>
-      <h1>{msg}</h1>
+      <h1>{formvalues.msg}</h1>
       <div className={style.form} >
         <div>
-        <label htmlFor="" className={style.label}>Question name : </label>
+        <label className={style.label}>Question name : </label>
         <input
           type="text"
-          value={question}
+          name = "question"
+          value={formvalues.question}
           className={style.input1}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
+          onChange={handleChange}
         />
         </div>
         
         <div>
-        <label htmlFor="" className={style.label}>Question link : </label>
+        <label className={style.label}>Question link : </label>
         <input
           type="text"
-          value={url}
+          name = "url"
+          value={formvalues.url}
           className={style.input1}
-          onChange={(e) => {
-            setUrl(e.target.value);
-          }}
+          onChange={handleChange}
         />
         </div>
         
         <div>
-        <label htmlFor="" className={style.label}>Points: </label>
+        <label className={style.label}>Points: </label>
         <input
           type="number"
-          value={points}
+          name = "points"
+          value={formvalues.points}
           className={style.input1}
-          onChange={(e) => {
-            setPoints(e.target.value);
-          }}
+          onChange={handleChange}
         />
         </div>
         
         <div className={style.buttonbox}>
-          <button className={style.button}  onClick={addNewQuestion}>Add New Question</button>
+          <button className={style.button} onClick={handleSubmit}>Add New Question</button>
         </div>
         </div>
       </div>

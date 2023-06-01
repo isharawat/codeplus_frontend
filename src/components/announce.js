@@ -1,12 +1,3 @@
-// import Post from "./Post";
-
-// export default function Announce({credentials}) {
-//   return (
-//       <div>
-//         <Post credentials={credentials} />
-//       </div>  
-//   );
-// }
 import { useState } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +11,7 @@ export default function Announce({credentials}) {
 
   const [post, setPost] = useState([]);
 
- const history=useNavigate();
+ const history = useNavigate();
   useEffect(() => {
     if (localStorage.getItem("token")) {
       const headers= {
@@ -28,17 +19,13 @@ export default function Announce({credentials}) {
         'auth-token': localStorage.getItem("token")
     }
       Axios.get("http://localhost:3001/posts/get-posts",{headers}).then((res) => {
-        //setQuestions(res.data.data.questions)
-         
-        console.log(res.data);
         setPost(res.data.data.posts);
-        console.log(post);
+   
     });
     }
     else {
         history("/login")
     }
-    // eslint-disable-next-line
 }, [])
   return (
     <>

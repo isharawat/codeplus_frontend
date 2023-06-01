@@ -16,7 +16,6 @@ export default function WomenDes() {
   };
   const [formvalues, setformvalues] = useState(initialvalues);
   const addDiscuss = async(values) =>{
-    console.log(values)
     const request = {
       ...values
     }
