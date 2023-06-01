@@ -34,7 +34,7 @@ function App() {
           <div className={style.part2}>
             <Routes>
           
-              <Route path="/" element={<Announce />}/>
+              <Route path="/" element={localStorage.getItem("token")?<Announce />:<Login/>}/>
               <Route path="/Discussions" element={<Discussions/>} /> 
               <Route path="/Leaderboard" element={<MainLeaderboard/>} /> 
               <Route path="/Questions" element={<Question/>}/> 

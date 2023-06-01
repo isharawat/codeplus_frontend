@@ -4,9 +4,11 @@ import style from "../Account/Account.module.css";
 import Axios from "axios";
 import { setState, useState } from "react";
 import DiscussionPost from "./DiscussionPost";
-
+import { useNavigate } from "react-router-dom";
 export default function Discussions() {
- 
+  const [discussions, setDiscussions] = useState([]);
+
+  const history=useNavigate();
   const user=JSON.parse(localStorage.getItem("User"));
   const initialvalues = {
     title: "",
@@ -15,18 +17,30 @@ export default function Discussions() {
     name: `${user.firstName} ${user.lastName}`,
   };
   const [formvalues, setformvalues] = useState(initialvalues);
-  const addADiscuss = async(values) =>{
+  const addADiscuss = async (values) =>{
     console.log(values)
     const request = {
       ...values
     }
-    console.log(request);
     const  headers = {
       'Content-Type': 'application/json',
       'auth-token': localStorage.getItem("token")
   }
     const response = await Axios.post("http://localhost:3001/discussion/add-discussion",request,{headers})
-    setformvalues(formvalues.concat(response.data))
+    if (localStorage.getItem("token")) {
+      const headers= {
+        'Content-Type': 'application/json',
+        'auth-token': localStorage.getItem("token")
+    }
+    Axios.get("http://localhost:3001/discussion/get-discussions",{headers}).then((res) => {     
+   
+     setDiscussions(res.data.data.discussions);
+
+   });
+    }
+    else {
+        history("/login")
+    }
 }
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,8 +57,22 @@ export default function Discussions() {
     setformvalues({...formvalues,[e.target.name]:e.target.value})
 }
 useEffect(() => {
-  console.log(user)
-}, [handleSubmit])
+  if (localStorage.getItem("token")) {
+    const headers= {
+      'Content-Type': 'application/json',
+      'auth-token': localStorage.getItem("token")
+  }
+  Axios.get("http://localhost:3001/discussion/get-discussions",{headers}).then((res) => {     
+
+   setDiscussions(res.data.data.discussions);
+  
+ });
+  }
+  else {
+      history("/login")
+  }
+  // eslint-disable-next-line
+}, [])
 
   return (
     <div >
@@ -78,7 +106,7 @@ useEffect(() => {
             </form>
           </div>     
       <div>
-        <DiscussionPost />
+        <DiscussionPost discussions={discussions}/>
       </div>
   </div>
   );
