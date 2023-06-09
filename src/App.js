@@ -17,6 +17,7 @@ import ContestReminder from './components/contestReminder';
 import Questions from './LockoutBot/Questions';
 import Main from './LockoutBot/main';
 import Form from './LockoutBot/Form';
+import Submission from './LockoutBot/Submission';
 import JoinContest from './LockoutBot/JoinContest';
 import { BrowserRouter, Route, Routes, NavLink, Navigate } from "react-router-dom"
 import React from 'react';
@@ -58,6 +59,7 @@ function App() {
                 <Route path="/LockoutBot/questions" element={<Questions/>}/>
                 <Route path="/LockoutBot/join-contest" element={<JoinContest/>}/>
                 <Route path="*" element={<h1>Error 404 page not found</h1>} /> 
+                <Route path="/Lockout/userinfo" element={<Submission/>}/>
               </Routes>
             </div>
             <div style={{position: "sticky", top: "80px", alignSelf: "start"}}>

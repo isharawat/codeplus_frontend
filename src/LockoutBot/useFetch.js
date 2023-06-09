@@ -2,22 +2,26 @@ import React,{useState,useEffect} from 'react'
 
 function useFetch(URL) {
   const [articles, setArticles] = useState(null)
-  const fetchUserData = () => {
-    fetch(URL)
-      .then(response => {
-        return response.json()
-      })
-      .then(results => {
-        setArticles(results.result.problems);
-      }).catch(err => {
-        console.log(err.message);
-      })
-  }
-
+  const abortCont = new AbortController();
+  
   useEffect(() => {
-    fetchUserData()
+   fetch(URL,{signal: abortCont.signal})
+     .then(res => res.json())
+     .then(
+       (results) => {
+         
+         setArticles(results.result);
+  
+       })
+       .catch(err=>{
+           if(err.name ==="AbortError" ){
+             console.log("Fetch Aborted")
+           }
+      
+       })
+   
  }, [URL])
- return articles;
+ return articles
 }
 
 export default useFetch
