@@ -1,14 +1,15 @@
 .commentbox{
-        background-color: #D8E4E8; 
-        margin-top: 10px;
-        padding:5px 25px 5px 25px;
-        border-radius: 10px;
+    background-color: #D8E4E8; 
+    margin-top: 10px;
+    border-radius: 10px;
+    outline: none;
 }
+
 .comment{
     width: 75%;
     margin: auto;
     display: grid;
-    grid-template-columns: 8fr 1fr;
+    grid-template-columns: 15fr 1fr;
 }
 .btn{
     display: flex;

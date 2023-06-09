@@ -1,4 +1,4 @@
-import stylep from "../styles/Home.module.css";
+
 import { useEffect } from "react";
 import style from "../Account/Account.module.css";
 import Axios from "axios";
@@ -32,10 +32,8 @@ export default function Discussions() {
         'Content-Type': 'application/json',
         'auth-token': localStorage.getItem("token")
     }
-    Axios.get("http://localhost:3001/discussion/get-discussions",{headers}).then((res) => {     
-   
+    Axios.get("http://localhost:3001/discussion/get-discussions",{headers}).then((res) => {      
      setDiscussions(res.data.data.discussions);
-
    });
     }
     else {
@@ -77,15 +75,16 @@ useEffect(() => {
   return (
     <div >
           <div className={style.box} style={{padding:"20px", margin: "10px", borderRadius:"15px",}}>
-            <form onSubmit={handleSubmit} className={style.form}>
-              <div>
+            <form onSubmit={handleSubmit} >
+              <div className={style.form}>
+              <div >
                 <label className={style.label}>Title: </label>
                 <input
                   type="text"
                   name="title"
                   value={formvalues.title}
                   onChange={handleChange}
-                  className={style.input1}
+                  className={style.input}
                   required
                 />
               </div>
@@ -96,11 +95,12 @@ useEffect(() => {
                   name="body"
                   value={formvalues.body}
                   onChange={handleChange}
-                  className={style.input1}
+                  className={style.input}
                   required
                 />
               </div>
-              <div className={style.buttonbox}>
+              </div>
+              <div className={style.buttonbox} >
                 <button className={style.button}>Sumbit</button>
               </div>
             </form>

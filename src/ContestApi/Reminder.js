@@ -19,7 +19,7 @@ export default function Reminder() {
            contest.in_24_hours==="No"? <ContestComponent key={contest.name} obj={contest}/>:<span></span>
             )):<div>No Contests to Show</div>}
         {leetcode!==null?leetcode.map(contest=>(
-           contest.in_24_hours==="Yes"? <ContestComponent key={contest.name} obj={contest}/>:<span></span>
+           contest.in_24_hours==="No"? <ContestComponent key={contest.name} obj={contest}/>:<span></span>
             )):<span>No Contests to Show</span>}
         
        

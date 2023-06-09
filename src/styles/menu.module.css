@@ -11,7 +11,10 @@
     height: 100vh;
     display: grid;
     grid-template-rows: 2fr 9fr 1fr;
-    background-color: #052E3B;
+    background-color: #052E3B; 
+}
+.navlink{
+    text-decoration: none;
 }
 .menubutton{
     width: 100%;
@@ -25,6 +28,7 @@
     color:white;
     cursor: pointer;
     font-size: 15px;
+    
 }
 .menubutton:hover{
     background-color: #286577;

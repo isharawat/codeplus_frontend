@@ -83,7 +83,8 @@ export default function WomenDes() {
         </p>
         <div className={styles.createpost}>
           <div className={style.box}>
-            <form onSubmit={handleSubmit} className={style.form}>
+            <form onSubmit={handleSubmit} >
+              <div className={style.form}>
               <div>
                 <label className={style.label}>Title: </label>
                 <input
@@ -91,7 +92,7 @@ export default function WomenDes() {
                   name="title"
                   value={formvalues.title}
                   onChange={handleChange}
-                  className={style.input1}
+                  className={style.input}
                 />
               </div>
               <div>
@@ -101,8 +102,9 @@ export default function WomenDes() {
                   name="body"
                   value={formvalues.body}
                   onChange={handleChange}
-                  className={style.input1}
+                  className={style.input}
                 />
+                </div>
               </div>
               <div className={style.buttonbox}>
                 <button className={style.button}>Sumbit</button>

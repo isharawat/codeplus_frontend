@@ -13,12 +13,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Menubar() {
+  const user=JSON.parse(localStorage.getItem("User"));
+  
   return (
     <div className={styles.menubox}>
       <div className={styles.logo}>CodePlus</div>
       <div>
         <button className={styles.menubutton}>
-          <NavLink to ="./">
+          <NavLink to ="./"  className={styles.navlink}>
             <div className={styles.menucontent}>
               <span style={{ marginRight: "20px" }}>
                 <FontAwesomeIcon icon={faBullhorn} className={styles.icon} />
@@ -28,7 +30,7 @@ export default function Menubar() {
           </NavLink>
         </button>
         <button className={styles.menubutton}>
-          <NavLink to ="./Questions">
+          <NavLink to ="./Questions"  className={styles.navlink}>
             <div className={styles.menucontent}>
               <span style={{ marginRight: "20px" }}>
                 <FontAwesomeIcon
@@ -41,7 +43,7 @@ export default function Menubar() {
           </NavLink>
         </button>
         <button className={styles.menubutton}>
-          <NavLink to ="./Discussions">
+          <NavLink to ="./Discussions"  className={styles.navlink}>
             <div className={styles.menucontent}>
               <span style={{ marginRight: "20px" }}>
                 <FontAwesomeIcon icon={faMessage} className={styles.icon} />
@@ -51,7 +53,7 @@ export default function Menubar() {
           </NavLink>
         </button>
         <button className={styles.menubutton}>
-          <NavLink to ="./WomenDes">
+          <NavLink to ="./WomenDes"  className={styles.navlink}>
             <div className={styles.menucontent}>
               <span style={{ marginRight: "20px" }}>
                 <FontAwesomeIcon icon={faVenus} className={styles.icon} />
@@ -61,7 +63,7 @@ export default function Menubar() {
           </NavLink>
         </button>
         <button className={styles.menubutton}>
-          <NavLink to="./Leaderboard">
+          <NavLink to="./Leaderboard"  className={styles.navlink}>
             <div className={styles.menucontent}>
               <span style={{ marginRight: "20px" }}>
                 <FontAwesomeIcon
@@ -74,7 +76,7 @@ export default function Menubar() {
           </NavLink>
         </button>
         <button className={styles.menubutton}>
-          <NavLink to="./topbar/topbar">
+          <NavLink to="./Lockout" className={styles.navlink}>
             <div className={styles.menucontent}>
               <span style={{ marginRight: "20px" }}>
                 <FontAwesomeIcon icon={faUserGroup} className={styles.icon} />
@@ -83,8 +85,10 @@ export default function Menubar() {
             </div>
           </NavLink>
         </button>
+        {user.isAdmin === true ? 
+        <div>
         <button className={styles.menubutton}>
-          <NavLink to="./ManageQuestions">
+          <NavLink to="./ManageQuestions"  className={styles.navlink}>
             <div className={styles.menucontent}>
               <span style={{ marginRight: "20px" }}>
                 <FontAwesomeIcon icon={faUserGroup} className={styles.icon} />
@@ -94,7 +98,7 @@ export default function Menubar() {
           </NavLink>
         </button>
         <button className={styles.menubutton}>
-          <NavLink to="./ManagePosts">
+          <NavLink to="./ManagePosts"  className={styles.navlink}>
             <div className={styles.menucontent}>
               <span style={{ marginRight: "20px" }}>
                 <FontAwesomeIcon icon={faUserGroup} className={styles.icon} />
@@ -102,7 +106,9 @@ export default function Menubar() {
                 Manage Posts
             </div>
           </NavLink>
-        </button>
+        </button></div>
+        : <span></span>
+}
       </div>
       <div className={styles.footer}>
         <div></div>

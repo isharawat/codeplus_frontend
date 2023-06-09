@@ -5,7 +5,7 @@
 
 .outer{
     display: block;
-    padding: 40px;    
+    padding: 30px;    
 }
 .outer1{
      padding: 20px;
@@ -16,7 +16,6 @@
     padding: 20px;
 }
 .codeplus{
-    padding: 20px;
     background-color: #D8E4E8;
     border-radius: 20px;   
     color: #052E3B;
@@ -75,24 +74,32 @@
 }
 
 .input1{
-    margin-left: 10px;
-    background-color: #D8E4E8;;
+    margin-left: 5px;
+    background-color: #06576C;
     border: none;
+    width: 10rem;
+    outline: none;
+    color: #D8E4E8;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #D8E4E8;
+}
+.input{
+    margin-left: 5px;
+    background-color: #D8E4E8;
+    border: none;
+    width: 10rem;
     outline: none;
     color: #06576C;
     margin-bottom: 20px;
- 
     border-bottom: 1px solid #06576C;
 }
 .label{
     margin-left: 20px;
-    margin-right: 6px;
 }
 .buttonbox{
-    display: flex;
     align-items: center;
     justify-content: center;
-    
+    text-align: center
 }
 .button{
     border-radius: 10px;
@@ -101,7 +108,7 @@
     padding: 5px 20px;
     color: #06576C;
     background-color: #D8E4E8;
-    border: 2px solid #06576C;
+    border: 1px solid #06576C;
     cursor: pointer;
 }
 .button:hover{
