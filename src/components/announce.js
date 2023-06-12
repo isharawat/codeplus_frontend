@@ -13,19 +13,13 @@ export default function Announce({credentials}) {
 
  const history = useNavigate();
   useEffect(() => {
-    if (localStorage.getItem("token")) {
       const headers= {
         'Content-Type': 'application/json',
-        'auth-token': localStorage.getItem("token")
-    }
+      }
       Axios.get("http://localhost:3001/posts/get-posts",{headers}).then((res) => {
         setPost(res.data.data.posts);
-   
     });
-    }
-    else {
-        history("/login")
-    }
+    
 }, [])
   return (
     <>

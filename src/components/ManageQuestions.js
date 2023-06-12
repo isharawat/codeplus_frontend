@@ -44,7 +44,7 @@ export default function ManageQuestions() {
   return (
     <div className={style.outer1}>
         <div className={style.box}>
-      <h1>{formvalues.msg}</h1>
+      <h3>{formvalues.msg}</h3>
       <div className={style.form} >
         <div>
         <label className={style.label}>Question name : </label>
@@ -52,7 +52,7 @@ export default function ManageQuestions() {
           type="text"
           name = "question"
           value={formvalues.question}
-          className={style.input1}
+          className={style.input}
           onChange={handleChange}
         />
         </div>
@@ -63,7 +63,7 @@ export default function ManageQuestions() {
           type="text"
           name = "url"
           value={formvalues.url}
-          className={style.input1}
+          className={style.input}
           onChange={handleChange}
         />
         </div>
@@ -74,7 +74,7 @@ export default function ManageQuestions() {
           type="number"
           name = "points"
           value={formvalues.points}
-          className={style.input1}
+          className={style.input}
           onChange={handleChange}
         />
         </div>

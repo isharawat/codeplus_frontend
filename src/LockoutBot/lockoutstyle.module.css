@@ -1,0 +1,39 @@
+.outest {
+    height: 50vh;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: #06576C;
+    margin: 20px;
+}
+.outer {
+    width: fit-content;
+}
+.btn {    
+    border: none;
+    margin: 10px;
+    font-size: 18px;
+    color: #D8E4E8;
+    border-radius: 15px;
+    padding: 4px 12px 4px 12px;
+    cursor: pointer;
+    background-color: #06576C;
+    
+}
+.btn:hover {
+    background-color: #D8E4E8;
+    color: #06576C;
+}
+.label {
+    font-size: 18px;
+    color: #D8E4E8;
+    margin: 10px;
+}
+.input {
+    border: none;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+}

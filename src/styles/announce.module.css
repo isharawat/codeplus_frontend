@@ -10,6 +10,7 @@
     background-color: #06576C;
     width: 75%;
     margin: auto;
+    font-size: 11px;
     margin-top: 5px;
     padding:1px 10px 4px 10px;
     border-radius: 10px;
@@ -22,15 +23,16 @@
 .postedByp{
     display: grid;
     grid-template-columns: 15fr 1fr;
-    font-size: 10px;
+    font-size: 8px;
     margin-bottom: 20px;
 }
 .postedBy{
     display: grid;
     grid-template-columns: 15fr 1fr;
-    font-size: 10px;
+    font-size: 7px;
 }
 .icon{
+    margin-right: 5px;
     font-size: 10px;
     color: #052E3B;
 }

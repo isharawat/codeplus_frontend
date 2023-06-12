@@ -1,6 +1,6 @@
 import styles from "../styles/Comment.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faChevronCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
@@ -69,7 +69,7 @@ export default function Comment({ obj }) {
           ></textarea>
           <button type="submit" className={styles.btn}>
             <FontAwesomeIcon
-              icon={faCircleArrowRight}
+              icon={faChevronCircleRight}
               style={{ fontSize: "25px", color: " #052E3B", cursor: "pointer" }}
             />
           </button>
