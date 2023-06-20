@@ -1,7 +1,8 @@
-import { setState, useState } from "react";
+import { setState, useContext, useState } from "react";
 import styles from "../styles/Post.module.css";
 import Axios from "axios";
 import style from "../Account/Account.module.css";
+import ApiContext from "../contextApi/apiContext";
 
 export default function ManagePosts() {
   const user = JSON.parse(localStorage.getItem("User"));
@@ -11,24 +12,10 @@ export default function ManagePosts() {
     comments: [],
     name: `${user.firstName} ${user.lastName}`,
   };
+  const context=useContext(ApiContext);
+  const {addADiscuss,showAlert} =context
   const [formvalues, setformvalues] = useState(initialvalues);
-  const addADiscuss = async (values) => {
-    console.log(values);
-    const request = {
-      ...values,
-    };
-    console.log(request);
-    const headers = {
-      "Content-Type": "application/json",
-      "auth-token": localStorage.getItem("token"),
-    };
-    const response = await Axios.post(
-      "http://localhost:3001/posts/add-posts",
-      request,
-      { headers }
-    );
-    setformvalues(formvalues.concat(response.data));
-  };
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setformvalues({ ...formvalues, [name]: value });
@@ -44,6 +31,7 @@ export default function ManagePosts() {
       comments: [],
       name: `${user.firstName} ${user.lastName}`,
     });
+    showAlert("Successfully Posted","success")
   };
   return (
     <div className={style.outer1}>

@@ -1,31 +1,26 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+
 import styles from "../styles/announce.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faUser } from "@fortawesome/free-solid-svg-icons";
 import Comment from "./Comment";
+import ApiContext from "../contextApi/apiContext";
 
 export default function Announce({credentials}) {
-
-  const [post, setPost] = useState([]);
-
+  const context=useContext(ApiContext)
+  const{allAnnouncementPosts,posts}=context
  const history = useNavigate();
   useEffect(() => {
-      const headers= {
-        'Content-Type': 'application/json',
-      }
-      Axios.get("http://localhost:3001/posts/get-posts",{headers}).then((res) => {
-        setPost(res.data.data.posts);
-    });
-    
+    allAnnouncementPosts();  
 }, [])
   return (
     <>
       <div>
         <ul>
-          {post.map((obj, key) => {
+          {posts && posts.map((obj, key) => {
             console.log(obj);
             return (
               <div key={key}>

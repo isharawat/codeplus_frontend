@@ -6,11 +6,11 @@ export default function Sideleaderboard(){
            <div className={styles.heading}><div>Name</div><span>Points</span></div> 
 
               <div className={styles.list}>
-              <div className={styles.content}><div>Name</div><span>Points</span></div>
-              <div className={styles.content}><div>Name</div><span>Points</span></div>
-              <div className={styles.content}><div>Name</div><span>Points</span></div>
-              <div className={styles.content}><div>Name</div><span>Points</span></div>
-              <div className={styles.content}><div>Name</div><span>Points</span></div>
+             
+              <div className={styles.content}><div>Mohsin</div><span>Infinity</span></div>
+              <div className={styles.content}><div>Mohsin</div><span>Infinity-1</span></div>
+              <div className={styles.content}><div>Mohsin</div><span>Infinity-2</span></div>
+              <div className={styles.content}><div>Mohsin</div><span>Infinity-3</span></div>
           </div>      
         </div>
       )
