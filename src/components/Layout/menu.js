@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream:src/components/menu.js
 import styles from "../styles/menu.module.css";
 import React,{useEffect,useState} from "react";
+=======
+import styles from "./menu.module.css";
+import React, { useEffect } from "react";
+>>>>>>> Stashed changes:src/components/Layout/menu.js
 import {  NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,10 +17,16 @@ import {
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
 
+<<<<<<< Updated upstream:src/components/menu.js
 export default function Menubar({users}) {
  
 
   
+=======
+export default function Menubar() {
+  const user=JSON.parse(localStorage.getItem("User"));
+  useEffect(()=>{},[user]);
+>>>>>>> Stashed changes:src/components/Layout/menu.js
   return (
     <div className={styles.menubox}>
       <div className={styles.logo}>CodePlus</div>
@@ -86,7 +97,11 @@ export default function Menubar({users}) {
             </div>
           </NavLink>
         </button>
+<<<<<<< Updated upstream:src/components/menu.js
         {users.isAdmin === true ? 
+=======
+        {user && user.isAdmin === true ? 
+>>>>>>> Stashed changes:src/components/Layout/menu.js
         <div>
         <button className={styles.menubutton}>
           <NavLink to="./ManageQuestions"  className={styles.navlink}>

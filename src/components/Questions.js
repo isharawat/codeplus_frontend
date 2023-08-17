@@ -26,7 +26,7 @@ export default function Question() {
     else {
       history("/login");
     }
-  },[])
+  },[question])
   
   const deleteQuestion = (id) => {
     if(headers) {
@@ -39,7 +39,6 @@ export default function Question() {
       history("/login");
     } 
   }
-
   return (
     <div>
       <ul>{
@@ -47,7 +46,7 @@ export default function Question() {
           
           console.log(val);
           return <li key={key} className={styles.li} >
-            <span><a href={val.url}>{val.question}</a></span>
+            <span><a href={val.url} target="_blank">{val.question}</a></span>
             <span>{val.points}</span>
             <button type="delete" style={{border: "none", backgroundColor: "#D8E4E8",}} onClick ={() => {deleteQuestion(val._id)} }>
               <FontAwesomeIcon
@@ -55,12 +54,12 @@ export default function Question() {
                 style={{ fontSize: 15, color: "black", cursor: "pointer" }}
               />
             </button>
-            <button type="edit" style={{border: "none", backgroundColor: "#D8E4E8"}}>
+            {/* <button type="edit" style={{border: "none", backgroundColor: "#D8E4E8"}}>
             <FontAwesomeIcon
               icon={faEdit}          
               style={{ fontSize: 15, color: "black", cursor: "pointer" }}
             />
-          </button>
+          </button> */}
           </li>
         })
       }      

@@ -1,41 +1,21 @@
 import { useState } from "react";
-import { NavLink,useNavigate } from "react-router-dom";
+import { NavLink,Navigate,useNavigate } from "react-router-dom";
 import style from "./Account.module.css";
-import axios from "axios";
-
+import { createUser } from "../services/api";
 const Signup = () => {
   //new changes
   const history = useNavigate();
-  const [credentials, setCredentials] = useState({ isLoggedin :false, isAdmin :false, firstName :'', codechef: '',
+  const initialCredentials = { isLoggedin :false, isAdmin :false, firstName :'', codechef: '',
    lastName :'', codeForces :'', atCoder :'', hackerEarth :'', leetcode :'',
-   emailId :'', password : ''  })
+   emailId :'', password : ''  }
+  const [credentials, setCredentials] = useState(initialCredentials);
+
   const handleSubmit = async (e) => {
       e.preventDefault()
-      const response = await fetch("http://localhost:3001/auth/register", {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ 
-            firstName: credentials.firstName, 
-            lastName: credentials.lastName,
-            codeForces: credentials.codeForces,
-            codechef: credentials.codechef,
-            leetcode: credentials.leetcode,
-            atCoder: credentials.atCoder,
-            hackerEarth: credentials.hackerEarth,
-            isLoggedin:false,
-            isAdmin:false,
-            emailId: credentials.emailId, 
-            password: credentials.password 
-          })
-      });
-      const json = await response.json()
-      console.log(json)
-      if (json.success === true) {
-          //Redirect
-          localStorage.setItem("token", json.authToken)
-          history("/")
+      const data = createUser({body: credentials});
+      console.log(data);
+      if (data.status === 200) {
+          setCredentials(initialCredentials);
       }
      
   }

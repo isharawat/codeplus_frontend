@@ -1,4 +1,4 @@
-import styles from '../styles/sideLeaderboard.module.css'
+import styles from './sideLeaderboard.module.css';
 export default function Sideleaderboard(){
     return (
         <div className={styles.leaderboard}>

@@ -26,9 +26,10 @@ const Login = () => {
     if (json.success === true) {
       //Redirect'
       localStorage.setItem("token", json.authToken);
+      json.user.isLoggedin = true;
       localStorage.setItem("User", JSON.stringify(json.user));
       const temp = localStorage.getItem("User");
-      localStorage.setItem("message", "");
+      localStorage.setItem("message", "Successfully, Logged In");
       history("/");
     }
   };

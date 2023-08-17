@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import ContestComponent from "./Contestcomponent";
-import styles from "../styles/contestReminder.module.css";
+import styles from "../components/ContestReminder/contestReminder.module.css";
 import useFetch from "./useFetch";
 export default function Reminder() {
     const codeforces = useFetch("https://kontests.net/api/v1/codeforces");

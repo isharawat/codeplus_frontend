@@ -1,4 +1,4 @@
-import styles from '../styles/announce.module.css'
+import styles from '../../styles/announce.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faUser } from "@fortawesome/free-solid-svg-icons";
 export default function Reply({obj}){

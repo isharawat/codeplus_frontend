@@ -1,4 +1,4 @@
-import styles from "../styles/contestReminder.module.css";
+import styles from "../components/ContestReminder/contestReminder.module.css"
 import codeforcesPic from "../assets/codeforceslog.jpg";
 import codechefPic from "../assets/icons8-codechef-50.png";
 import leetcodePic from "../assets/leetcode (1).png";

@@ -51,7 +51,7 @@ const Timer = () => {
 		if (Ref.current) clearInterval(Ref.current);
 		const id = setInterval(() => {
 			startTimer(e);
-		}, 1000)
+		}, 8000)
 		Ref.current = id;
 	}
 

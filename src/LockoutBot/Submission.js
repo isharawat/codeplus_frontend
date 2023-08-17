@@ -50,9 +50,6 @@ const Submission = () => {
           const currSubmit = submission[submit];
           if (currQues.name === currSubmit.problem.name) {
             if (currSubmit.verdict === "OK") {
-              // const newPoints=points+currQues.points
-              // console.log(newPoints);
-              // setPoints(newPoints);
 
               points = points + currQues.points;
             }

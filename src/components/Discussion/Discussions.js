@@ -1,13 +1,15 @@
-import styles from "../styles/womenDes.module.css";
-import style from "../Account/Account.module.css";
+
+import { useEffect } from "react";
+import style from "../../Account/Account.module.css";
 import Axios from "axios";
-import { setState, useState,useEffect } from "react";
-import WomenPost from "./WomenPost";
+import { setState, useState } from "react";
+import DiscussionPost from "./DiscussionPost";
 import { useNavigate } from "react-router-dom";
-export default function WomenDes() {
-  const user = JSON.parse(localStorage.getItem("User"));
-  const history = useNavigate();
-  const [womenpost, setWomenPost] = useState([]);
+export default function Discussions() {
+  const [discussions, setDiscussions] = useState([]);
+
+  const history=useNavigate();
+  const user=JSON.parse(localStorage.getItem("User"));
   const initialvalues = {
     title: "",
     body: "",
@@ -15,7 +17,8 @@ export default function WomenDes() {
     name: `${user.firstName} ${user.lastName}`,
   };
   const [formvalues, setformvalues] = useState(initialvalues);
-  const addDiscuss = async(values) =>{
+  const addADiscuss = async (values) =>{
+    console.log(values)
     const request = {
       ...values
     }
@@ -23,23 +26,15 @@ export default function WomenDes() {
       'Content-Type': 'application/json',
       'auth-token': localStorage.getItem("token")
   }
-    try{
-      const response = await Axios.post("http://localhost:3001/women-section/add-women-post",request,{headers})
-    }
-    catch(err){
-      console.log("error h bhai",err);
-    }
+    const response = await Axios.post("http://localhost:3001/discussion/add-discussion",request,{headers})
     if (localStorage.getItem("token")) {
       const headers= {
         'Content-Type': 'application/json',
         'auth-token': localStorage.getItem("token")
-     }
-      Axios.get("http://localhost:3001/women-section/get-women-posts", {headers}).then((res) => {
-      
-
-        setWomenPost(res.data.data.womenposts);
-
-      });
+    }
+    Axios.get("http://localhost:3001/discussion/get-discussions",{headers}).then((res) => {      
+     setDiscussions(res.data.data.discussions);
+   });
     }
     else {
         history("/login")
@@ -47,8 +42,9 @@ export default function WomenDes() {
 }
   const handleSubmit = (e) => {
     e.preventDefault();
-    addDiscuss({...formvalues}) 
-    setformvalues({title: "",
+
+    addADiscuss({...formvalues}) 
+    setformvalues({ title: "",
     body: "",
     comments: [],
     name: `${user.firstName} ${user.lastName}`})
@@ -58,34 +54,30 @@ export default function WomenDes() {
   const handleChange = (e)=>{
     setformvalues({...formvalues,[e.target.name]:e.target.value})
 }
+useEffect(() => {
+  if (localStorage.getItem("token")) {
+    const headers= {
+      'Content-Type': 'application/json',
+      'auth-token': localStorage.getItem("token")
+  }
+  Axios.get("http://localhost:3001/discussion/get-discussions",{headers}).then((res) => {     
 
+   setDiscussions(res.data.data.discussions);
+  
+ });
+  }
+  else {
+      history("/login")
+  }
+  // eslint-disable-next-line
+}, [])
 
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      const headers= {
-        'Content-Type': 'application/json',
-        'auth-token': localStorage.getItem("token")
-     }
-      Axios.get("http://localhost:3001/women-section/get-women-posts", {headers}).then((res) => {
-        setWomenPost(res.data.data.womenposts);
-      });
-    }
-    else {
-        history("/login")
-    }
-  }, []);
   return (
-    <div>
-      <div className={styles.description}>
-        <h3>Women Community</h3>
-        <p>
-          Please Share Any useful Information or new opportunities for girls.
-        </p>
-        <div className={styles.createpost}>
-          <div className={style.box}>
+    <div >
+          <div className={style.box} style={{padding:"20px", margin: "10px", borderRadius:"15px",}}>
             <form onSubmit={handleSubmit} >
               <div className={style.form}>
-              <div>
+              <div >
                 <label className={style.label}>Title: </label>
                 <input
                   type="text"
@@ -93,6 +85,7 @@ export default function WomenDes() {
                   value={formvalues.title}
                   onChange={handleChange}
                   className={style.input}
+                  required
                 />
               </div>
               <div>
@@ -103,19 +96,19 @@ export default function WomenDes() {
                   value={formvalues.body}
                   onChange={handleChange}
                   className={style.input}
+                  required
                 />
-                </div>
               </div>
-              <div className={style.buttonbox}>
+              </div>
+              <div className={style.buttonbox} >
                 <button className={style.button}>Sumbit</button>
               </div>
             </form>
-          </div>
-        </div>
-      </div>
+          </div>     
       <div>
-        <WomenPost  womenpost={womenpost}/>
+        <DiscussionPost discussions={discussions}/>
       </div>
-    </div>
+  </div>
   );
 }
+

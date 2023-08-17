@@ -1,15 +1,13 @@
-
-import { useEffect } from "react";
-import style from "../Account/Account.module.css";
+import styles from "./womenDes.module.css";
+import style from "../../Account/Account.module.css";
 import Axios from "axios";
-import { setState, useState } from "react";
-import DiscussionPost from "./DiscussionPost";
+import { setState, useState,useEffect } from "react";
+import WomenPost from "./WomenPost";
 import { useNavigate } from "react-router-dom";
-export default function Discussions() {
-  const [discussions, setDiscussions] = useState([]);
-
-  const history=useNavigate();
-  const user=JSON.parse(localStorage.getItem("User"));
+export default function WomenDes() {
+  const user = JSON.parse(localStorage.getItem("User"));
+  const history = useNavigate();
+  const [womenpost, setWomenPost] = useState([]);
   const initialvalues = {
     title: "",
     body: "",
@@ -17,8 +15,7 @@ export default function Discussions() {
     name: `${user.firstName} ${user.lastName}`,
   };
   const [formvalues, setformvalues] = useState(initialvalues);
-  const addADiscuss = async (values) =>{
-    console.log(values)
+  const addDiscuss = async(values) =>{
     const request = {
       ...values
     }
@@ -26,15 +23,23 @@ export default function Discussions() {
       'Content-Type': 'application/json',
       'auth-token': localStorage.getItem("token")
   }
-    const response = await Axios.post("http://localhost:3001/discussion/add-discussion",request,{headers})
+    try{
+      const response = await Axios.post("http://localhost:3001/women-section/add-women-post",request,{headers})
+    }
+    catch(err){
+      console.log("error h bhai",err);
+    }
     if (localStorage.getItem("token")) {
       const headers= {
         'Content-Type': 'application/json',
         'auth-token': localStorage.getItem("token")
-    }
-    Axios.get("http://localhost:3001/discussion/get-discussions",{headers}).then((res) => {      
-     setDiscussions(res.data.data.discussions);
-   });
+     }
+      Axios.get("http://localhost:3001/women-section/get-women-posts", {headers}).then((res) => {
+      
+
+        setWomenPost(res.data.data.womenposts);
+
+      });
     }
     else {
         history("/login")
@@ -42,9 +47,8 @@ export default function Discussions() {
 }
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    addADiscuss({...formvalues}) 
-    setformvalues({ title: "",
+    addDiscuss({...formvalues}) 
+    setformvalues({title: "",
     body: "",
     comments: [],
     name: `${user.firstName} ${user.lastName}`})
@@ -54,30 +58,34 @@ export default function Discussions() {
   const handleChange = (e)=>{
     setformvalues({...formvalues,[e.target.name]:e.target.value})
 }
-useEffect(() => {
-  if (localStorage.getItem("token")) {
-    const headers= {
-      'Content-Type': 'application/json',
-      'auth-token': localStorage.getItem("token")
-  }
-  Axios.get("http://localhost:3001/discussion/get-discussions",{headers}).then((res) => {     
 
-   setDiscussions(res.data.data.discussions);
-  
- });
-  }
-  else {
-      history("/login")
-  }
-  // eslint-disable-next-line
-}, [])
 
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      const headers= {
+        'Content-Type': 'application/json',
+        'auth-token': localStorage.getItem("token")
+     }
+      Axios.get("http://localhost:3001/women-section/get-women-posts", {headers}).then((res) => {
+        setWomenPost(res.data.data.womenposts);
+      });
+    }
+    else {
+        history("/login")
+    }
+  }, []);
   return (
-    <div >
-          <div className={style.box} style={{padding:"20px", margin: "10px", borderRadius:"15px",}}>
+    <div>
+      <div className={styles.description}>
+        <h3>Women Community</h3>
+        <p>
+          Please Share Any useful Information or new opportunities for girls.
+        </p>
+        <div className={styles.createpost}>
+          <div className={style.box}>
             <form onSubmit={handleSubmit} >
               <div className={style.form}>
-              <div >
+              <div>
                 <label className={style.label}>Title: </label>
                 <input
                   type="text"
@@ -85,7 +93,6 @@ useEffect(() => {
                   value={formvalues.title}
                   onChange={handleChange}
                   className={style.input}
-                  required
                 />
               </div>
               <div>
@@ -96,19 +103,19 @@ useEffect(() => {
                   value={formvalues.body}
                   onChange={handleChange}
                   className={style.input}
-                  required
                 />
+                </div>
               </div>
-              </div>
-              <div className={style.buttonbox} >
+              <div className={style.buttonbox}>
                 <button className={style.button}>Sumbit</button>
               </div>
             </form>
-          </div>     
-      <div>
-        <DiscussionPost discussions={discussions}/>
+          </div>
+        </div>
       </div>
-  </div>
+      <div>
+        <WomenPost  womenpost={womenpost}/>
+      </div>
+    </div>
   );
 }
-
