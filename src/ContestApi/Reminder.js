@@ -13,10 +13,10 @@ export default function Reminder() {
       <div className={styles.contestbox}>
         <h3>Contest Reminder</h3>
         {codeforces!==null?codeforces.map(contest=>(
-           contest.in_24_hours==="No"? <ContestComponent key={contest.name} obj={contest}/>:<span></span>
+           contest.in_24_hours==="Yes"? <ContestComponent key={contest.name} obj={contest}/>:<span></span>
             )):<div>No Contests to Show</div>}
         {codechef!==null?codechef.map(contest=>(
-           contest.in_24_hours==="No"? <ContestComponent key={contest.name} obj={contest}/>:<span></span>
+           contest.in_24_hours==="Yes"? <ContestComponent key={contest.name} obj={contest}/>:<span></span>
             )):<div>No Contests to Show</div>}
         {leetcode!==null?leetcode.map(contest=>(
            contest.in_24_hours==="No"? <ContestComponent key={contest.name} obj={contest}/>:<span></span>

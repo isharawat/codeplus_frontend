@@ -22,22 +22,24 @@ import JoinContest from './LockoutBot/JoinContest';
 import { BrowserRouter, Route, Routes, NavLink, Navigate } from "react-router-dom"
 import React from 'react';
 import { useState, useEffect} from 'react';
+import Alert from './components/alert';
+import ApiState from './contextApi/apiState';
 function App() {
-  
-  const  [credentials, setCredentials] = useState([]);
-  
   const user=JSON.parse(localStorage.getItem("User"));
-
+  console.log(user);
   return (
+   <>
+   <ApiState>
     <BrowserRouter>
       
       <div className={style.app}>
         <div style={{position: "-webkit-sticky", position: "sticky" ,top: "0", left:"0",alignSelf: "start"}}>
-          <Menubar />
+          <Menubar users={user}/>
         </div>
         <div >
           <div style={{position: "-webkit-sticky", position: "sticky" ,top: "0"}}> 
-            <Topbar setCredentials = {setCredentials}/>
+            <Topbar />
+<Alert/>
           </div>
          
           <div className={style.part2}>
@@ -73,6 +75,8 @@ function App() {
     </div>
        
     </BrowserRouter>
+    </ApiState>
+    </>
 
   );
 }

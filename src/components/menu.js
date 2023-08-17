@@ -1,5 +1,5 @@
 import styles from "../styles/menu.module.css";
-import React from "react";
+import React,{useEffect,useState} from "react";
 import {  NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,8 +12,9 @@ import {
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function Menubar() {
-  const user=JSON.parse(localStorage.getItem("User"));
+export default function Menubar({users}) {
+ 
+
   
   return (
     <div className={styles.menubox}>
@@ -85,7 +86,7 @@ export default function Menubar() {
             </div>
           </NavLink>
         </button>
-        {user.isAdmin === true ? 
+        {users.isAdmin === true ? 
         <div>
         <button className={styles.menubutton}>
           <NavLink to="./ManageQuestions"  className={styles.navlink}>
